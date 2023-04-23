@@ -1,0 +1,19 @@
+.navigatorDesign{
+    height: 2em;
+    width: 8em;
+    background-color: rgba(181, 181, 179);
+    border-radius: 0.5em;
+    border: 0.1em solid white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    transition: 0.3s;
+}
+
+.navigatorDesign:hover{
+    background-color:rgb(73, 78, 109);
+    color: white;
+    transition: 0.3s;
+}

@@ -1,0 +1,9 @@
+.headerDesign{
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: white;
+    }
