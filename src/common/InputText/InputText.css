@@ -1,0 +1,11 @@
+.inputBasicDesign{
+    width: 13em;
+    height: 2em;
+    border: 0.2em solid rgba(0, 0, 0, 0.9);
+    border-radius: 0.5em;
+    margin: 0.5em;
+}
+
+.inputErrorDesign{
+    border: 0.2em solid rgb(193, 84, 98);
+}
