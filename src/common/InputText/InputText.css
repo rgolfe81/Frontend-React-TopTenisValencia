@@ -1,6 +1,6 @@
 .inputBasicDesign{
-    width: 13em;
-    height: 2em;
+    width: 25em;
+    height: 2.5em;
     border: 0.2em solid rgba(0, 0, 0, 0.9);
     border-radius: 0.5em;
     margin: 0.5em;
@@ -8,4 +8,13 @@
 
 .inputErrorDesign{
     border: 0.2em solid rgb(193, 84, 98);
+}
+
+@media (max-width: 768px) {
+    .inputBasicDesign {
+      width: 15em;
+    }
+    .inputErrorDesign {
+        width: 15em;
+      }
 }

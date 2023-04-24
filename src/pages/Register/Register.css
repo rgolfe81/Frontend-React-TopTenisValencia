@@ -1,9 +1,64 @@
 .registerDesign {
-    height: 80vh;
-    width: 100vw;
-    background-color: rgb(192, 97, 47);
+  min-height: 85vh;
+  max-width: 100vw;
+  background-color: rgb(192, 97, 47);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.titleDesign {
+  border-bottom: 0.15em solid black;
+  width: 18em;
+  height: 2em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxDesignRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  padding: 1em;
+  background-color: rgb(243, 243, 87);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1em;
+}
+.buttonOff {
+    width: 7em;
+    height: 2em;
+    margin-top: 1em;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
+    background-color: rgb(224, 142, 97);
+    color: white;
+    border-radius: 0.3em;
   }
+  
+  .buttonOn {
+    background-color: rgb(160, 53, 14);
+    cursor: pointer;
+  }
+  
+  .buttonOn:hover {
+    background-color: rgb(97, 27, 2);
+    transition: 0.5s;
+  }
+
+@media (max-width: 768px) {
+  .boxDesignRegister {
+    max-width: 90vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .boxDesignRegister {
+    min-width: 70vw;
+  }
+}
