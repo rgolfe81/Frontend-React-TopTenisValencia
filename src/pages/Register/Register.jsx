@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { InputText } from "../../common/InputText/InputText";
 import "./Register.css";
+import { checkInputs } from "../../helpers/useful";
 
 export const Register = () => {
-
   // Hook datos credenciales del usuario
   const [credenciales, setCredenciales] = useState({
     name: "",
@@ -12,7 +12,7 @@ export const Register = () => {
     password: "",
     city: "",
     age: "",
-    phone: ""
+    phone: "",
   });
   // Hooks para validación de errores de credenciales de usuario
   const [credencialesError, setCredencialesError] = useState({
@@ -22,7 +22,7 @@ export const Register = () => {
     passwordError: "",
     cityError: "",
     ageError: "",
-    phoneError: ""
+    phoneError: "",
   });
   const [credencialesIsValid, setCredencialesIsValid] = useState({
     nameIsValid: false,
@@ -31,19 +31,19 @@ export const Register = () => {
     passwordIsValid: false,
     cityIsValid: false,
     ageIsValid: false,
-    phoneIsValid: false
+    phoneIsValid: false,
   });
 
   // Hook validación final que activa el botón de envío de datos
   const [activeForm, setActiveForm] = useState(false);
 
-    // Manejador de cambios en la entrada de credenciales de los InputText del evento onChange
-    const inputHandler = (e) => {
-      setCredenciales((preveState) => ({
-        ...preveState,
-        [e.target.name]: e.target.value,
-      }));
-    };
+  // Manejador de cambios en la entrada de credenciales de los InputText del evento onChange
+  const inputHandler = (e) => {
+    setCredenciales((preveState) => ({
+      ...preveState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   // Manejador de cambios del evento onBlur
   const inputValidate = (e) => {
@@ -93,7 +93,11 @@ export const Register = () => {
           <h2>Registro Usuario</h2>
         </div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.nameError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="text"
           maxLength="30"
           name="name"
@@ -102,8 +106,13 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.nameError}</div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.surnameError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="text"
           maxLength="50"
           name="surname"
@@ -112,8 +121,13 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.surnameError}</div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.emailError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="email"
           maxLength="50"
           name="email"
@@ -122,8 +136,13 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.emailError}</div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.passwordError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="password"
           maxLength="30"
           name="password"
@@ -132,8 +151,13 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.passwordError}</div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.cityError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="text"
           maxLength="40"
           name="city"
@@ -142,18 +166,28 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.cityError}</div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.ageError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="text"
           maxLength="2"
           name="age"
           placeholder="Escribe tu edad"
-          required={false}
+          required={true}
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.ageError}</div>
         <InputText
-          className="inputBasicDesign"
+          className={
+            credencialesError.phoneError === ""
+              ? "inputBasicDesign"
+              : "inputBasicDesign inputErrorDesign"
+          }
           type="text"
           maxLength="9"
           name="phone"
@@ -162,6 +196,7 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        <div>{credencialesError.phoneError}</div>
         <div
           className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
           onClick={
