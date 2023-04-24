@@ -20,6 +20,7 @@
 
 .boxDesignRegister {
   display: flex;
+  min-width: 60vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -57,8 +58,3 @@
   }
 }
 
-@media (min-width: 768px) {
-  .boxDesignRegister {
-    min-width: 70vw;
-  }
-}
