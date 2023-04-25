@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { InputText } from "../../common/InputText/InputText";
 import "./Register.css";
 import { checkInputs } from "../../helpers/useful";
+import { useNavigate } from "react-router-dom";
+import { registerMe } from "../../services/apiCalls";
+import { FaCity, FaEnvelope, FaLock, FaPhoneSquareAlt, FaUser, FaUserPlus, FaBirthdayCake } from "react-icons/fa";
 
 export const Register = () => {
+  const navigate = useNavigate();
+
   // Hook datos credenciales del usuario
   const [credenciales, setCredenciales] = useState({
     name: "",
@@ -86,12 +91,43 @@ export const Register = () => {
     setActiveForm(true);
   });
 
+  const [congratulations, setCongratulations] = useState("");
+
+  const registrame = () => {
+    registerMe(credenciales)
+      .then((respuesta) => {
+        let nameUser = respuesta.data.data.name;
+        console.log(respuesta);
+        if (nameUser) {
+          setCongratulations(
+            `Enhorabuena ${nameUser}, te has registrado correctamente`
+          );
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000);
+        } else {
+          setCongratulations(`Error: ${respuesta.data}`);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      })
+
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="registerDesign">
       <div className="boxDesignRegister">
-        <div className="titleDesign">
+        <div className="titleRegisterDesign">
           <h4>Registro Usuario</h4>
         </div>
+        {congratulations !== "" ? (
+          <div>{congratulations}</div>
+        ) : (
+          <>
+            <div>
+              <FaUser className="iconDesign" />
         <InputText
           className={
             credencialesError.nameError === ""
@@ -106,7 +142,10 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.nameError}</div>
+        <div>
+              <FaUserPlus className="iconDesign" />
         <InputText
           className={
             credencialesError.surnameError === ""
@@ -121,7 +160,10 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.surnameError}</div>
+        <div>
+              <FaEnvelope className="iconDesign" />
         <InputText
           className={
             credencialesError.emailError === ""
@@ -136,7 +178,10 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.emailError}</div>
+        <div>
+              <FaLock className="iconDesign" />
         <InputText
           className={
             credencialesError.passwordError === ""
@@ -151,7 +196,10 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.passwordError}</div>
+        <div>
+              <FaCity className="iconDesign" />
         <InputText
           className={
             credencialesError.cityError === ""
@@ -166,7 +214,10 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.cityError}</div>
+        <div>
+              <FaBirthdayCake className="iconDesign" />
         <InputText
           className={
             credencialesError.ageError === ""
@@ -181,7 +232,10 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.ageError}</div>
+        <div>
+              <FaPhoneSquareAlt className="iconDesign" />
         <InputText
           className={
             credencialesError.phoneError === ""
@@ -196,19 +250,22 @@ export const Register = () => {
           changeFunction={(e) => inputHandler(e)}
           blurValidateFunction={(e) => inputValidate(e)}
         />
+        </div>
         <div>{credencialesError.phoneError}</div>
         <div
           className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
           onClick={
             activeForm
               ? () => {
-                  // registrame();
+                  registrame();
                 }
               : () => {}
           }
         >
           Registrarse
         </div>
+        </>
+        )}
       </div>
     </div>
   );

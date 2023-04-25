@@ -86,8 +86,12 @@ export const Login = () => {
         let datosBackend = {
           token: respuesta.data.token,
           usuario: decodificado,
-          nameUser: nameUser,
+          nameUser: nameUser
         };
+        console.log(respuesta);
+        console.log(decodificado);
+        console.log(nameUser);
+        console.log(datosBackend);
 
         //Este es el momento en el que guardo en REDUX
         // dispatch(login({ credentials: datosBackend }));
@@ -112,7 +116,7 @@ export const Login = () => {
   return (
     <div className="loginDesign">
       <div className="boxDesignLogin">
-        <div className="titleDesign">
+        <div className="titleLoginDesign">
           <h4>Iniciar sesión</h4>
         </div>
         {welcome !== "" ? (
