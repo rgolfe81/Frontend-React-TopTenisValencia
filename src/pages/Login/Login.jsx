@@ -75,7 +75,7 @@ export const Login = () => {
     <div className="loginDesign">
       <div className="boxDesignLogin">
         <div className="titleDesign">
-          <h2>Iniciar sesión</h2>
+          <h4>Iniciar sesión</h4>
         </div>
         {/* {welcome !== "" ? (
           <div>{welcome}</div>

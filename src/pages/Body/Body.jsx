@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home } from "../Home/Home";
 import { Login } from "../Login/Login";
 import { Register } from "../Register/Register";
+import { Tournaments } from "../Tournaments/Tournaments";
 
 export const Body = () => {
   return (
@@ -11,6 +12,7 @@ export const Body = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/tournaments" element={<Tournaments />} />
       </Routes>
     </>
   );
