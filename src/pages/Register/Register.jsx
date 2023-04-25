@@ -90,7 +90,7 @@ export const Register = () => {
     <div className="registerDesign">
       <div className="boxDesignRegister">
         <div className="titleDesign">
-          <h2>Registro Usuario</h2>
+          <h4>Registro Usuario</h4>
         </div>
         <InputText
           className={

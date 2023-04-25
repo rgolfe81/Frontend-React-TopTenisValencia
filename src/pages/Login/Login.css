@@ -1,0 +1,63 @@
+.loginDesign {
+    min-height: 85vh;
+    max-width: 100vw;
+    background-color: rgb(192, 97, 47);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  .boxDesignLogin {
+    display: flex;
+    min-width: 40vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4em;
+    padding: 1em;
+    background-color: rgb(243, 243, 87);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
+  }
+  
+  .titleDesign {
+    border-bottom: 0.15em solid black;
+    width: 100%;
+    height: 2em;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .buttonOff {
+    width: 10em;
+    height: 2.5em;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(224, 142, 97);
+    color: white;
+    border-radius: 0.3em;
+  }
+  
+  .buttonOn {
+    background-color: rgb(43, 3, 246);
+    cursor: pointer;
+  }
+  
+  .iconDesign {
+    color: black;
+    font-size: 1.5em;
+  }
+  .buttonOn:hover {
+    background-color: rgb(33, 2, 135);
+    transition: 0.5s;
+  }
+  @media (max-width: 768px) {
+    .boxDesignLogin {
+      max-width: 90vw;
+    }
+  }
