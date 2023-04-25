@@ -3,8 +3,13 @@ import "./Login.css";
 import { InputText } from "../../common/InputText/InputText";
 import { FaLock, FaUser } from "react-icons/fa";
 import { checkInputs } from "../../helpers/useful";
+import { logMe } from "../../services/apiCalls";
+import { decodeToken } from "react-jwt";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   // Hook datos credenciales del usuario
   const [credenciales, setCredenciales] = useState({
     email: "",
@@ -29,6 +34,8 @@ export const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
+  const [welcome, setWelcome] = useState("");
 
   // Manejador de cambios del evento onBlur
   const inputValidate = (e) => {
@@ -71,66 +78,97 @@ export const Login = () => {
     setActiveForm(true);
   });
 
+  const logeame = () => {
+    logMe(credenciales)
+      .then((respuesta) => {
+        let decodificado = decodeToken(respuesta.data.token);
+        let nameUser = respuesta.data.name;
+        let datosBackend = {
+          token: respuesta.data.token,
+          usuario: decodificado,
+          nameUser: nameUser,
+        };
+
+        //Este es el momento en el que guardo en REDUX
+        // dispatch(login({ credentials: datosBackend }));
+
+        //Mensaje después de Login
+        if (datosBackend.token) {
+          setWelcome(`Hola ${nameUser}, has iniciado sesión correctamente`);
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
+        } else {
+          setWelcome(`Error: ${respuesta.data}`);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      })
+
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="loginDesign">
       <div className="boxDesignLogin">
         <div className="titleDesign">
           <h4>Iniciar sesión</h4>
         </div>
-        {/* {welcome !== "" ? (
+        {welcome !== "" ? (
           <div>{welcome}</div>
-        ) : ( */}
-        <>
-          <div>
-            <FaUser className="iconDesign" />
-            <InputText
-              className={
-                credencialesError.emailError === ""
-                  ? "inputBasicDesign"
-                  : "inputBasicDesign inputErrorDesign"
+        ) : (
+          <>
+            <div>
+              <FaUser className="iconDesign" />
+              <InputText
+                className={
+                  credencialesError.emailError === ""
+                    ? "inputBasicDesign"
+                    : "inputBasicDesign inputErrorDesign"
+                }
+                type="email"
+                maxLength="50"
+                name="email"
+                placeholder="Escribe el email"
+                required={true}
+                changeFunction={(e) => inputHandler(e)}
+                blurValidateFunction={(e) => inputValidate(e)}
+              />
+            </div>
+            <div>{credencialesError.emailError}</div>
+            <div>
+              <FaLock className="iconDesign" />
+              <InputText
+                className={
+                  credencialesError.passwordError === ""
+                    ? "inputBasicDesign"
+                    : "inputBasicDesign inputErrorDesign"
+                }
+                type="password"
+                maxLength="30"
+                name="password"
+                placeholder="Escribe la contraseña"
+                required={true}
+                changeFunction={(e) => inputHandler(e)}
+                blurValidateFunction={(e) => inputValidate(e)}
+              />
+            </div>
+            <div>{credencialesError.passwordError}</div>
+            <div
+              className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
+              onClick={
+                activeForm
+                  ? () => {
+                      logeame();
+                    }
+                  : () => {}
               }
-              type="email"
-              maxLength="50"
-              name="email"
-              placeholder="Escribe el email"
-              required={true}
-              changeFunction={(e) => inputHandler(e)}
-              blurValidateFunction={(e) => inputValidate(e)}
-            />
-          </div>
-          <div>{credencialesError.emailError}</div>
-          <div>
-            <FaLock className="iconDesign" />
-            <InputText
-              className={
-                credencialesError.passwordError === ""
-                  ? "inputBasicDesign"
-                  : "inputBasicDesign inputErrorDesign"
-              }
-              type="password"
-              maxLength="30"
-              name="password"
-              placeholder="Escribe la contraseña"
-              required={true}
-              changeFunction={(e) => inputHandler(e)}
-              blurValidateFunction={(e) => inputValidate(e)}
-            />
-          </div>
-          <div>{credencialesError.passwordError}</div>
-          <div
-            className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
-            onClick={
-              activeForm
-                ? () => {
-                    // logeame();
-                  }
-                : () => {}
-            }
-          >
-            Login
-          </div>
-        </>
-        {/* )} */}
+            >
+              Login
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

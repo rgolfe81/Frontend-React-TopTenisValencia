@@ -26,7 +26,10 @@ export const checkInputs = (name, data, required) => {
     case "password":
       if (data === "" && required === true) {
         return { message: "El campo no puede estar vacío", validated: false };
-      } else if (!/^(?=.*[A-Z])(?=.*\d)(?!.*\s).{6,}$/.test(data)) {
+      } else if (
+        // !/^(?=.*[A-Z])(?=.*\d)(?!.*\s).{6,}$/
+        !/^.{6}$/.test(data)
+        ) {
         return {
           message: "Al menos 6 caracteres con una mayúscula y un número",
           validated: false,
