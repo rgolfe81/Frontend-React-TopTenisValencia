@@ -5,9 +5,16 @@ import { FaLock, FaUser } from "react-icons/fa";
 import { checkInputs } from "../../helpers/useful";
 import { logMe } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../userSlice";
 
 export const Login = () => {
+
   const navigate = useNavigate();
+
+  // Variables Redux
+    const dispatch = useDispatch();
+    const credentialsRdx = useSelector(userData);
 
   // Hook datos credenciales del usuario
   const [credenciales, setCredenciales] = useState({
@@ -35,6 +42,13 @@ export const Login = () => {
   };
 
   const [welcome, setWelcome] = useState("");
+
+  useEffect(() => {
+    if (credentialsRdx.credentials?.token) {
+      //Si ya existe toquen, redireccionamos a Home
+      navigate("/");
+    }
+  }, []);
 
   // Manejador de cambios del evento onBlur
   const inputValidate = (e) => {
@@ -86,10 +100,10 @@ export const Login = () => {
         };
         console.log(respuesta);
 
-        //Este es el momento en el que guardo en REDUX
-        // dispatch(login({ credentials: datosBackend }));
+        // Guardado en REDUX
+        dispatch(login({ credentials: datosBackend }));
 
-        //Mensaje después de Login
+        // Mensaje después de Login
         let nameUser = datosBackend.fullUser.name;
         if (datosBackend.token) {
           setWelcome(`Hola ${nameUser}, has iniciado sesión correctamente`);
