@@ -4,7 +4,6 @@ import { InputText } from "../../common/InputText/InputText";
 import { FaLock, FaUser } from "react-icons/fa";
 import { checkInputs } from "../../helpers/useful";
 import { logMe } from "../../services/apiCalls";
-import { decodeToken } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -81,26 +80,21 @@ export const Login = () => {
   const logeame = () => {
     logMe(credenciales)
       .then((respuesta) => {
-        let decodificado = decodeToken(respuesta.data.token);
-        let nameUser = respuesta.data.name;
         let datosBackend = {
           token: respuesta.data.token,
-          usuario: decodificado,
-          nameUser: nameUser
+          fullUser: respuesta.data.user,
         };
         console.log(respuesta);
-        console.log(decodificado);
-        console.log(nameUser);
-        console.log(datosBackend);
 
         //Este es el momento en el que guardo en REDUX
         // dispatch(login({ credentials: datosBackend }));
 
         //Mensaje después de Login
+        let nameUser = datosBackend.fullUser.name;
         if (datosBackend.token) {
           setWelcome(`Hola ${nameUser}, has iniciado sesión correctamente`);
           setTimeout(() => {
-            navigate("/");
+            navigate("/tournaments");
           }, 3000);
         } else {
           setWelcome(`Error: ${respuesta.data}`);
