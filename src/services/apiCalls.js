@@ -18,3 +18,7 @@ export const bringProfile = async (token) => {
     };
     return await axios.get(`${root}/users/profile`, config);
 }
+
+export const bringTournaments = async () => {
+    return await axios.get(`${root}/tournaments`);
+}

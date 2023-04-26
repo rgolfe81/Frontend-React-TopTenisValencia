@@ -37,29 +37,29 @@ export const Profile = () => {
           <thead>
             <tr>
               <td>Nombre</td>
-              <td>{profile.data.name}</td>
+              <td>{profile.data?.name}</td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Apellidos</td>
-              <td>{profile.data.surname}</td>
+              <td>{profile.data?.surname}</td>
             </tr>
             <tr>
               <td>Edad</td>
-              <td>{profile.data.age}</td>
+              <td>{profile.data?.age}</td>
             </tr>
             <tr>
               <td>Ciudad</td>
-              <td>{profile.data.city}</td>
+              <td>{profile.data?.city}</td>
             </tr>
             <tr>
               <td>Email</td>
-              <td>{profile.data.email}</td>
+              <td>{profile.data?.email}</td>
             </tr>
             <tr>
               <td>Teléfono</td>
-              <td>{profile.data.phone}</td>
+              <td>{profile.data?.phone}</td>
             </tr>
           </tbody>
         </Table>
