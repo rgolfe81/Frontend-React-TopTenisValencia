@@ -96,7 +96,7 @@ export const Login = () => {
       .then((respuesta) => {
         let datosBackend = {
           token: respuesta.data.token,
-          fullUser: respuesta.data.user,
+          fullUser: respuesta.data.user
         };
         console.log(respuesta);
 
