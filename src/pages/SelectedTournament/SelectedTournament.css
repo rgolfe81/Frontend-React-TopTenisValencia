@@ -1,4 +1,4 @@
-.tournamentsDesign {
+.tournamentDesign {
     min-height: 85vh;
     max-width: 100vw;
     background-color: rgb(192, 97, 47);
@@ -6,11 +6,12 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    color: white;
   }
   
-  .titleTournamentsDesign {
-    border-bottom: 0.15em solid black;
-    width: 60%;
+  .titleTournamentDesign {
+    border-bottom: 0.15em solid white;
+    width: 55%;
     height: 2em;
     margin-top: 2em;
     margin-bottom: 1em;
@@ -18,3 +19,54 @@
     justify-content: center;
     align-items: center;
   }
+  .boxImageTournamentDesign{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 2em;
+  }
+  .imgTournamentDesign {
+    width: 25em;
+    border-radius: 1em;
+  }
+
+  .buttonTournamentDesign{
+    background-color: rgb(246, 246, 71);
+    border-radius: 0.5em;
+    border: white solid 2px;
+    width: 20em;
+
+  }
+  .buttonTournamentDesign:hover{
+    border: yellow solid 2px;
+  }
+
+  .boxButtonsDesign{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-top: 2em;
+    gap: 0.5em;
+  }
+
+  @media (max-width: 768px) {
+    h4 {
+      font-size: 18px;
+    }
+    .titleTournamentDesign{
+        width: 90%;
+    }
+    .imgTournamentDesign {
+        width: 15em;
+      }
+    .boxImageTournamentDesign{
+        justify-content: center;
+    }
+    .boxButtonsDesign{
+        align-items: center;
+    }
+    .buttonTournamentDesign{
+        width: 13em;
+    }
+}
