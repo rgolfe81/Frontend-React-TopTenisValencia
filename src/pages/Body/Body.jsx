@@ -5,6 +5,7 @@ import { Login } from "../Login/Login";
 import { Register } from "../Register/Register";
 import { Tournaments } from "../Tournaments/Tournaments";
 import { Profile } from "../Profile/Profile";
+import { SelectedTournament } from "../SelectedTournament/SelectedTournament";
 
 export const Body = () => {
   return (
@@ -15,6 +16,7 @@ export const Body = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/tournaments" element={<Tournaments />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/selectedTournament" element={<SelectedTournament />} />
       </Routes>
     </>
   );

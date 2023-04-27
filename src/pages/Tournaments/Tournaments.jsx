@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Tournaments.css";
 import { bringTournaments } from "../../services/apiCalls";
 import { Table } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { idTournament } from "../tournamentSlice";
 
 export const Tournaments = () => {
   const [allTournaments, setAllTournaments] = useState([]);
   const [loading, setLoading] = useState(true); // Agrega un estado para manejar el estado de carga
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +28,13 @@ export const Tournaments = () => {
     fetchData();
   }, []);
 
-  console.log(allTournaments);
+
+  const goToSelectedTournament = ($id) => {
+    let idSelectedTournament = $id; 
+    dispatch(idTournament({ infoTournament: idSelectedTournament}));
+    navigate("/selectedTournament");
+  }
+
   return (
     <div className="tournamentsDesign">
       <div className="titleTournamentsDesign">
@@ -31,7 +42,7 @@ export const Tournaments = () => {
       </div>
       <Table striped bordered className="bg-white border-3 tableTournamentDesign">
         <thead>
-          <tr>
+          <tr className="titleRowTable">
             <th>Torneo</th>
             <th>Inicio</th>
             <th>Fin</th>
@@ -46,11 +57,13 @@ export const Tournaments = () => {
             </tr>
           ) : allTournaments.length > 0 ? (
             allTournaments.map((tournament) => (
-              <tr key={tournament.id} className="">
+              <tr key={tournament.id}>
                 <td>{tournament.name}</td>
                 <td>{tournament.start_date}</td>
                 <td>{tournament.end_date}</td>
-                <td>seleccionar</td>
+                <td><button className="goButtonDesign" 
+                onClick={() => goToSelectedTournament(tournament.id)}
+                >Ir</button></td>
               </tr>
             ))
           ) : (

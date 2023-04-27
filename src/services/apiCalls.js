@@ -22,3 +22,7 @@ export const bringProfile = async (token) => {
 export const bringTournaments = async () => {
     return await axios.get(`${root}/tournaments`);
 }
+
+export const bringTournamentById = async (id) => {
+  return await axios.get(`${root}/tournament/${id}`);
+}

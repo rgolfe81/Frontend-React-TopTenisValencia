@@ -19,6 +19,21 @@
   align-items: center;
 }
 
+.titleRowTable{
+  background-color: rgb(171, 171, 171) ;
+}
+
+.goButtonDesign{
+  background-color: green;
+  border-radius: 0.5em;
+  border: white solid 2px;
+  width: 3em;
+  color: white;
+}
+.goButtonDesign:hover{
+  border:green solid 2px;
+}
+
 @media (min-width: 768px) {
   .tableTournamentDesign {
     max-width: 60%;

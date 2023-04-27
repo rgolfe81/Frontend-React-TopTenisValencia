@@ -4,9 +4,11 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
+import tournamentSlice from '../pages/tournamentSlice';
 
 const reducers = combineReducers({
     user: userSlice,
+    tournamentId: tournamentSlice,
 })
 
 const persistConfig = {
