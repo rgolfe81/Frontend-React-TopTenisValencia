@@ -31,6 +31,7 @@ export const Tournaments = () => {
 
   const goToSelectedTournament = ($id) => {
     let idSelectedTournament = $id; 
+    // Guardamos en redux el id del torneo seleccionado
     dispatch(idTournament({ infoTournament: idSelectedTournament}));
     navigate("/selectedTournament");
   }

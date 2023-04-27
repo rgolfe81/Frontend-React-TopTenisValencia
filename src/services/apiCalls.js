@@ -26,3 +26,12 @@ export const bringTournaments = async () => {
 export const bringTournamentById = async (id) => {
   return await axios.get(`${root}/tournament/${id}`);
 }
+
+export const addMeToTournament = async (id, body, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.post(`${root}/tournaments/${id}`, body, config);
+}

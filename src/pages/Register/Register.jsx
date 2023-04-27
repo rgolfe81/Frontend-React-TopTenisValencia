@@ -97,7 +97,6 @@ export const Register = () => {
     registerMe(credenciales)
       .then((respuesta) => {
         let nameUser = respuesta.data.data.name;
-        console.log(respuesta);
         if (nameUser) {
           setCongratulations(
             `Enhorabuena ${nameUser}, te has registrado correctamente`
