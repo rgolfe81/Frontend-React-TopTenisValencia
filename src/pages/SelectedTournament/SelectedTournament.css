@@ -8,6 +8,10 @@
     align-items: center;
     color: white;
   }
+
+  .tournamentMessageDesign{
+    padding-top: 4em;
+  }
   
   .titleTournamentDesign {
     border-bottom: 0.15em solid white;

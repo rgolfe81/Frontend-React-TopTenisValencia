@@ -28,7 +28,7 @@ const [congratulations, setCongratulations] = useState("");
   }, []);
 
   if (!tournamentById) {
-    return <div className="tournamentDesign">Cargando datos ...</div>;
+    return <div className="tournamentDesign tournamentMessageDesign">Cargando datos ...</div>;
   }
 
   // Pasamos la id del usuario almacenda en redux a json, que es lo que espera el backend
@@ -58,7 +58,6 @@ const [congratulations, setCongratulations] = useState("");
     }
   }
   
-  
 
   return (
     <div className="tournamentDesign">
@@ -70,7 +69,7 @@ const [congratulations, setCongratulations] = useState("");
         {tournamentById.data.end_date}
       </div>
       {congratulations !== "" ? (
-          <div>{congratulations}</div>
+          <div className="tournamentMessageDesign">{congratulations}</div>
         ) : (
           <>
       <Container>

@@ -9,7 +9,7 @@
 }
 
 .titleTournamentsDesign {
-  border-bottom: 0.15em solid black;
+  border-bottom: 0.15em solid white;
   width: 60%;
   height: 2em;
   margin-top: 2em;
@@ -17,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .titleRowTable{

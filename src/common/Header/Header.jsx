@@ -1,10 +1,13 @@
 import React from "react";
 import "./Header.css";
 import { Navigator } from "../Navigator/Navigator";
-import { FaUser } from "react-icons/fa";
+import { FaHome, FaUser, FaKey, FaFileAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userData, userout } from "../../pages/userSlice";
+import { IoTennisballOutline } from 'react-icons/io5';
+import { AiOutlineUser } from 'react-icons/ai';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -18,27 +21,30 @@ export const Header = () => {
 
   return (
     <div className="headerDesign">
-      <Navigator ruta={"Home"} destino={"/"} />
-      <Navigator ruta={"Torneos"} destino={"/tournaments"} />
+      <div className="headerAdjustment">
+      <Navigator ruta={<span><FaHome className="fs-5"/> <span className="textNavigator">Home</span></span>} destino={"/"} />
+
+      <Navigator ruta={<span><IoTennisballOutline className="fs-5"/> <span className="textNavigator">Torneos</span></span>} destino={"/tournaments"} />
       {!credentialsRdx.credentials.token ? (
         <>
-          <Navigator ruta={"Login"} destino={"/login"} />
-          <Navigator ruta={"Registro"} destino={"/register"} />
+          <Navigator ruta={<span><FaKey className="fs-5"/> <span className="textNavigator">Login</span></span>} destino={"/login"} />
+          <Navigator ruta={<span><FaFileAlt className="fs-5"/> <span className="textNavigator">Registro</span></span>} destino={"/register"} />
         </>
       ) : (
         <>
-          <Navigator ruta={"Perfil"} destino={"/profile"} />
-          <div className="navigatorDesign" onClick={() => logoutFunction()}>Logout</div>
+          <Navigator ruta={<span><AiOutlineUser className="fs-5"/> <span className="textNavigator">Perfil</span></span>} destino={"/profile"} />
+          <div className="navigatorDesign" onClick={() => logoutFunction()}><span><RiLogoutCircleRLine className="fs-5"/> <span className="textNavigator">Logout</span></span></div>
           <div>
             {credentialsRdx.credentials.token ? (
               <div>
-                <FaUser className="text-white fs-5" />{" "}
+                <FaUser className="text-white fs-5 textNavigator" />{" "}
                 {credentialsRdx.credentials.fullUser.name}
               </div>
             ) : null}
           </div>
         </>
       )}
+      </div>
     </div>
   );
 };
