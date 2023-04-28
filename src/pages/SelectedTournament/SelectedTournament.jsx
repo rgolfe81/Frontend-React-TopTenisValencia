@@ -9,11 +9,14 @@ import { userData } from "../userSlice";
 
 export const SelectedTournament = () => {
 const [congratulations, setCongratulations] = useState("");
-  const [tournamentById, setTournamentById] = useState();
-  const infoTournamentRdx = useSelector(tournamentIdData);
-  const selectedTournamentID = infoTournamentRdx.infoTournament;
-  const credentialsRdx = useSelector(userData);
-  const { token, fullUser} = credentialsRdx.credentials;
+const [tournamentById, setTournamentById] = useState();
+const infoTournamentRdx = useSelector(tournamentIdData);
+const { id } = infoTournamentRdx.infoTournament;
+const selectedTournamentID = id;
+
+const credentialsRdx = useSelector(userData);
+const { token, fullUser} = credentialsRdx.credentials;
+
 
   useEffect(() => {
     const fetchData = async () => {

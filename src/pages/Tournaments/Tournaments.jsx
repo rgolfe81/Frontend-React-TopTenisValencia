@@ -29,10 +29,10 @@ export const Tournaments = () => {
   }, []);
 
 
-  const goToSelectedTournament = ($id) => {
-    let idSelectedTournament = $id; 
-    // Guardamos en redux el id del torneo seleccionado
-    dispatch(idTournament({ infoTournament: idSelectedTournament}));
+  const goToSelectedTournament = (tournament) => {
+    let selectedTournament = tournament; 
+    // Guardamos en redux los datos del torneo seleccionado
+    dispatch(idTournament({ infoTournament: selectedTournament}));
     navigate("/selectedTournament");
   }
 
@@ -63,7 +63,7 @@ export const Tournaments = () => {
                 <td>{tournament.start_date}</td>
                 <td>{tournament.end_date}</td>
                 <td><button className="goButtonDesign" 
-                onClick={() => goToSelectedTournament(tournament.id)}
+                onClick={() => goToSelectedTournament(tournament)}
                 >Ir</button></td>
               </tr>
             ))
