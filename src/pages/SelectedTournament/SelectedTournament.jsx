@@ -6,6 +6,7 @@ import { tournamentIdData } from "../tournamentSlice";
 import { Col, Container, Row } from "react-bootstrap";
 import Img_01 from "../../img/img_default_tournament.jpg";
 import { userData } from "../userSlice";
+import { useNavigate } from "react-router-dom";
 
 export const SelectedTournament = () => {
 const [congratulations, setCongratulations] = useState("");
@@ -13,7 +14,7 @@ const [tournamentById, setTournamentById] = useState();
 const infoTournamentRdx = useSelector(tournamentIdData);
 const { id } = infoTournamentRdx.infoTournament;
 const selectedTournamentID = id;
-
+const navigate = useNavigate();
 const credentialsRdx = useSelector(userData);
 const { token, fullUser} = credentialsRdx.credentials;
 
@@ -61,7 +62,6 @@ const { token, fullUser} = credentialsRdx.credentials;
     }
   }
   
-
   return (
     <div className="tournamentDesign">
       <div className="titleTournamentDesign">
@@ -99,7 +99,7 @@ const { token, fullUser} = credentialsRdx.credentials;
               <div>
                 <button
                   className="buttonTournamentDesign"
-                  // onClick={() => namefunction()}
+                  onClick={() => navigate("/playersTournament")}
                 >
                   Jugadores inscritos
                 </button>
