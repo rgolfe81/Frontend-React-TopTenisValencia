@@ -44,3 +44,12 @@ export const bringUsersByTournament = async (id, token) => {
   };
   return await axios.get(`${root}/tournaments/${id}`, config);
 }
+
+export const addMatchToTournament = async (id, body, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.post(`${root}/tennisMatches/${id}`, body, config);
+}
