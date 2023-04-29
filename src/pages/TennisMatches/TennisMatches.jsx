@@ -32,17 +32,27 @@ export const TennisMatches = () => {
   const [playersTournament, setPlayersTournament] = useState([]);
 
   const [newTennisMatch, setNewTennisMatch] = useState({
-    date: dayjs(dateForTransform).format("YYYY-MM-DD"),
+    date: "",
     location: "",
     player1_user_id: "",
     player2_user_id: "",
   });
-
+  // Manejador de cambios en los input/select
   const inputHandler = (e) => {
     setNewTennisMatch((preveState) => ({
       ...preveState,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  // Manejador de cambios en la selección de fecha en el calendario, formateando la fecha
+  const handleDateChange = (date) => {
+    const formattedDate = dayjs(date).format('YYYY-MM-DD');
+    setNewTennisMatch((prevState) => ({
+      ...prevState,
+      date: formattedDate,
+    }));
+    setDateForTransform(date);
   };
 
   // Recibimos los jugadores del torneo para seleccionarlos posteriormente
@@ -102,7 +112,7 @@ export const TennisMatches = () => {
               <Col sm={12} md={6} className="col1TennisMatches">
                 <div className="calendarDesign">
                   <Calendar
-                    onChange={setDateForTransform}
+                    onChange={(date) => handleDateChange(date)}
                     value={dateForTransform}
                   />
                 </div>
