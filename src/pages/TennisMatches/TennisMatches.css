@@ -1,41 +1,103 @@
 .tennisMatchDesign {
-    min-height: 85vh;
-    max-width: 100vw;
-    background-color: rgb(192, 97, 47);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    color: white;
-  }
+  min-height: 85vh;
+  max-width: 100vw;
+  background-color: rgb(192, 97, 47);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  color: white;
+}
 
-  .titleTennisMatchDesign {
-    border-bottom: 0.15em solid white;
-    width: 55%;
-    height: 2em;
-    margin-top: 2em;
-    margin-bottom: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.titleTennisMatchDesign {
+  border-bottom: 0.15em solid white;
+  width: 55%;
+  height: 2em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .tennisMatchMessageDesign{
-    padding-top: 4em;
-  }
+.tennisMatchMessageDesign {
+  padding-top: 4em;
+}
 
-  .calendarDesign{
-    background-color: black;
-    width: 30%;
-    padding: 1em;
-    border-radius: 0.5em;
-    text-align: center;
+.calendarDesign {
+  background-color: black;
+  padding: 1em;
+  border-radius: 0.5em;
+  text-align: center;
+}
 
+.col1TennisMatches {
+  display: flex;
+  justify-content: end;
+}
+
+.col2TennisMatches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.btnTennisMatches {
+  background-color: rgb(246, 246, 71);
+  border-radius: 0.5em;
+  border: white solid 2px;
+}
+
+.btnTennisMatches:hover {
+  border: yellow solid 2px;
+}
+
+.addMatchBtn {
+  background-color: green;
+  color: white;
+}
+.addMatchBtn:hover {
+  border: green solid 2px;
+}
+
+.inputsTennisMatchesDesign {
+  border-radius: 0.5em;
+}
+
+.longSelect {
+  min-width: 70%;
+}
+
+.containerTennisMatches {
+  width: 60%;
+}
+
+.labelPlayerAlign {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (max-width: 768px) {
-    .calendarDesign{
-    width: 90%;
+  .calendarDesign {
     font-size: 11px;
-    }
+  }
+  .col1TennisMatches {
+    justify-content: center;
+  }
+  .col2TennisMatches {
+    justify-content: center;
+  }
+  .dateSelected {
+    display: flex;
+    justify-content: center;
+  }
+  .containerTennisMatches {
+    width: 100%;
+  }
+  .labelPlayerAlign {
+    justify-content: space-between;
+  }
+  .titleTennisMatchDesign {
+    width: 90%;
+  }
 }
