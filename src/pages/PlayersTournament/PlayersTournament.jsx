@@ -37,7 +37,6 @@ export const PlayersTournament = () => {
     }
   }, [token]);
 
-  console.log(playersTournament);
   return (
     <div className="playersTournamentsDesign">
       <div className="titlePlayersTournamentsDesign">
@@ -63,7 +62,7 @@ export const PlayersTournament = () => {
           {/* Verifica si los datos han sido cargados */}
           {loading ? (
             <tr>
-              <td colSpan={4}>Cargando datos ...</td>
+              <td colSpan={6}>Cargando datos ...</td>
             </tr>
           ) : playersTournament.length > 0 ? (
             playersTournament.map((player) => (
