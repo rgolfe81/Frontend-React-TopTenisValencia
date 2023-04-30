@@ -135,6 +135,7 @@ export const TennisMatches = () => {
                         name="player1_user_id"
                         onChange={(e) => inputHandler(e)}
                       >
+                        <option value="">Seleccione jugador 1</option>
                         {playersTournament.map((player) => (
                           <option key={player.id} value={player.id}>
                             {player.name} {player.surname}
@@ -149,6 +150,7 @@ export const TennisMatches = () => {
                         name="player2_user_id"
                         onChange={(e) => inputHandler(e)}
                       >
+                        <option value="">Seleccione jugador 2</option>
                         {playersTournament.map((player) => (
                           <option key={player.id} value={player.id}>
                             {player.name} {player.surname}
