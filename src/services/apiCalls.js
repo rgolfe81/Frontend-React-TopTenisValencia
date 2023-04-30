@@ -53,3 +53,12 @@ export const addMatchToTournament = async (id, body, token) => {
   };
   return await axios.post(`${root}/tennisMatches/${id}`, body, config);
 }
+
+export const bringResultFortWinner = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/resultsForWinner/${id}`, config);
+}

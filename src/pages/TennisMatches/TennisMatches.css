@@ -49,6 +49,7 @@
 }
 
 .btnTennisMatches:hover {
+  background-color: yellow;
   border: yellow solid 2px;
 }
 
@@ -57,6 +58,7 @@
   color: white;
 }
 .addMatchBtn:hover {
+  background-color: green;
   border: green solid 2px;
 }
 

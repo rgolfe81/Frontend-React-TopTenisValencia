@@ -8,6 +8,7 @@ import { Profile } from "../Profile/Profile";
 import { SelectedTournament } from "../SelectedTournament/SelectedTournament";
 import { PlayersTournament } from "../PlayersTournament/PlayersTournament";
 import { TennisMatches } from "../TennisMatches/TennisMatches";
+import { Results } from "../Results/Results";
 
 export const Body = () => {
   return (
@@ -21,6 +22,7 @@ export const Body = () => {
         <Route path="/selectedTournament" element={<SelectedTournament />} />
         <Route path="/playersTournament" element={<PlayersTournament />} />
         <Route path="/tennisMatches" element={<TennisMatches />} />
+        <Route path="/result" element={<Results />} />
       </Routes>
     </>
   );

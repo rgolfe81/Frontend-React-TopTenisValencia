@@ -42,6 +42,7 @@
 
   }
   .buttonTournamentDesign:hover{
+    background-color: yellow;
     border: yellow solid 2px;
   }
 
