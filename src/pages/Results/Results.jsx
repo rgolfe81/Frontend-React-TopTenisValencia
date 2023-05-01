@@ -3,7 +3,10 @@ import "./Results.css";
 import { useSelector } from "react-redux";
 import { tournamentIdData } from "../tournamentSlice";
 import { userData } from "../userSlice";
-import { bringResultFortWinner, updateWinnerToResult } from "../../services/apiCalls";
+import {
+  bringResultFortWinner,
+  updateWinnerToResult,
+} from "../../services/apiCalls";
 import { Table } from "react-bootstrap";
 
 export const Results = () => {
@@ -20,7 +23,7 @@ export const Results = () => {
   });
   const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
   const [selectedMatchId, setSelectedMatchId] = useState(null);
-
+  const [congratulations, setCongratulations] = useState("");
 
   // Manejador de cambios en los input/select
   const inputHandler = (e) => {
@@ -60,22 +63,24 @@ export const Results = () => {
     }
   }, [token]);
 
-// Actualizamos el valor del id del partido seleccionado en el checkbox, para enviarlo por parametros a la función updateWinnerToResult()
-useEffect(() => {
-    const matchId = Object.keys(selectedCheckboxes).find(id => selectedCheckboxes[id] === true);
+  // Actualizamos el valor del id del partido seleccionado en el checkbox, para enviarlo por parametros a la función updateWinnerToResult()
+  useEffect(() => {
+    const matchId = Object.keys(selectedCheckboxes).find(
+      (id) => selectedCheckboxes[id] === true
+    );
     setSelectedMatchId(matchId);
   }, [selectedCheckboxes]);
 
   const sendUpdateWinnerToResult = () => {
     updateWinnerToResult(selectedMatchId, winnerToResult, token)
       .then((response) => {
-        if (token) {
-        //   setCongratulations(
-        //     `Enhorabuena ${fullUser.name}, has actualizado el resultado del partido correctamente`
-        //   );
-        //   setTimeout(() => {
-        //     window.location.reload();
-        //   }, 3000);
+        if (fullUser.name) {
+          setCongratulations(
+            `Enhorabuena ${fullUser.name}, has actualizado el resultado del partido correctamente`
+          );
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
         } else {
           setCongratulations(`Error: ${response.data}`);
           setTimeout(() => {
@@ -86,115 +91,107 @@ useEffect(() => {
       .catch((error) => console.log(error));
   };
 
-
-
   return (
     <div className="playersTournamentsDesign">
-      <div className="titlePlayersTournamentsDesign">
-        <h4>Introducir ganador</h4>
+      <div className="titleResultsDesign">
+        <h5>Actualizar ganador</h5>
       </div>
       <h5>{selectedTournamentName}</h5>
-      <Table
-        striped
-        bordered
-        className="bg-white border-3 tablePlayersTournamentsDesign"
-      >
-        <thead>
-          <tr className="text-center titleRowTable">
-            <th>Partido</th>
-            <th colSpan={2}>Jugador 1</th>
-            <th colSpan={2}>Jugador 2</th>
-            <th colSpan={2}>Ganador</th>
-          </tr>
-          <tr className="text-center titleRowTable">
-            <th>Id</th>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Id</th>
-            <th>Nombre</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Verifica si los datos han sido cargados */}
-          {loading ? (
-            <tr>
-              <td colSpan={7}>Cargando datos ...</td>
-            </tr>
-          ) : resultWithPlayers.length > 0 ? (
-            resultWithPlayers.map((result) => (
-              <tr key={result.id}>
-                <td className="text-center">{result.tennis_match_id}
-                <input
-                type="checkbox"
-                id={result.tennis_match_id}
-                checked={selectedCheckboxes[result.tennis_match_id]}
-                onChange={(e) => handleCheckboxChange(e)}
-              />
-                </td>
-                <td className="text-center">{result.player1_user_id}</td>
-                <td>
-                  {result.player1_name} {result.player1_surname}
-                </td>
-                <td className="text-center">{result.player2_user_id}</td>
-                <td>
-                  {result.player2_name} {result.player2_surname}
-                </td>
-                <td className="text-center">{result.winner_user_id}</td>
+      {congratulations !== "" ? (
+        <div className="resultsMessageDesign">{congratulations}</div>
+      ) : (
+        <>
+          <Table
+            striped
+            bordered
+            className="bg-white border-3 tableResultsDesign"
+          >
+            <thead>
+              <tr className="text-center titleRowTable">
+                <th>Partido</th>
+                <th>Jugador 1</th>
+                <th>Jugador 2</th>
+                <th>Ganador</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Verifica si los datos han sido cargados */}
+              {loading ? (
+                <tr>
+                  <td colSpan={7}>Cargando datos ...</td>
+                </tr>
+              ) : resultWithPlayers.length > 0 ? (
+                resultWithPlayers.map((result) => (
+                  <tr key={result.id}>
+                    <td className="text-center">
+                      {result.tennis_match_id}{" "}
+                      <input
+                        type="checkbox"
+                        id={result.tennis_match_id}
+                        checked={selectedCheckboxes[result.tennis_match_id]}
+                        onChange={(e) => handleCheckboxChange(e)}
+                      />
+                    </td>
+                    <td>
+                      {result.player1_name} {result.player1_surname}
+                    </td>
+                    <td>
+                      {result.player2_name} {result.player2_surname}
+                    </td>
 
-                {result.winner_user_id === null ? (
-                  <td>
-                    <div className="labelPlayerAlign">
-
-                      
-                    {selectedCheckboxes[result.tennis_match_id] ? (
-                        <select
-                            className="inputsTennisMatchesDesign"
-                            name="winner_user_id"
-                            onChange={(e) => inputHandler(e)}
-                        >
-                            <option value="">Seleccione ganador</option>
-                            <option
+                    {result.winner_user_id === null ? (
+                      <td>
+                        <div className="labelPlayerAlign">
+                          {selectedCheckboxes[result.tennis_match_id] ? (
+                            <select
+                              className="inputsTennisMatchesDesign"
+                              name="winner_user_id"
+                              onChange={(e) => inputHandler(e)}
+                            >
+                              <option value="">Seleccione ganador</option>
+                              <option
                                 key={result.player1_user_id}
                                 value={result.player1_user_id}
-                            >
+                              >
                                 {result.player1_name} {result.player1_surname}
-                            </option>
-                            <option
+                              </option>
+                              <option
                                 key={result.player2_user_id}
                                 value={result.player2_user_id}
-                            >
+                              >
                                 {result.player2_name} {result.player2_surname}
-                            </option>
-                        </select>
-                    ) : null}
-                </div>
-            </td>
-        ) : (
-            <td>
-                {result.winner_name} {result.winner_surname}
-            </td>
-        )}
-    </tr>
-))
-          ) : (
-            <tr>
-              <td colSpan={7}>
-                No se encuentran datos de jugadores para introducir ganador
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </Table>
-      <button
-        className="btnTennisMatches addMatchBtn"
-        onClick={() => {
-          sendUpdateWinnerToResult();
-        }}
-      >
-        Enviar
-      </button>
+                              </option>
+                            </select>
+                          ) : null}
+                        </div>
+                      </td>
+                    ) : (
+                      <td>
+                        {result.winner_name} {result.winner_surname}
+                      </td>
+                    )}
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={7}>
+                    No se encuentran datos de jugadores para introducir ganador
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+
+          <button
+            className="btnTennisMatches addMatchBtn"
+            onClick={() => {
+              sendUpdateWinnerToResult();
+            }}
+          >
+            Enviar
+          </button>
+        </>
+      )}
     </div>
   );
 };
