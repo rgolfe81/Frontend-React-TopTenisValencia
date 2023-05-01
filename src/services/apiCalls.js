@@ -62,3 +62,12 @@ export const bringResultFortWinner = async (id, token) => {
   };
   return await axios.get(`${root}/resultsForWinner/${id}`, config);
 }
+
+export const updateWinnerToResult = async (id, body, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.put(`${root}/results/${id}`, body, config);
+}
