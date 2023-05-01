@@ -9,6 +9,7 @@ import { SelectedTournament } from "../SelectedTournament/SelectedTournament";
 import { PlayersTournament } from "../PlayersTournament/PlayersTournament";
 import { TennisMatches } from "../TennisMatches/TennisMatches";
 import { Results } from "../Results/Results";
+import { ResultsTennisMatches } from "../ResultsTennisMatches/ResultsTennisMatches";
 
 export const Body = () => {
   return (
@@ -23,6 +24,7 @@ export const Body = () => {
         <Route path="/playersTournament" element={<PlayersTournament />} />
         <Route path="/tennisMatches" element={<TennisMatches />} />
         <Route path="/result" element={<Results />} />
+        <Route path="/resultsTennisMatches" element={<ResultsTennisMatches />} />
       </Routes>
     </>
   );

@@ -71,3 +71,21 @@ export const updateWinnerToResult = async (id, body, token) => {
   };
   return await axios.put(`${root}/results/${id}`, body, config);
 }
+
+export const bringTennisMatches = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/tennisMatches/${id}`, config);
+}
+
+export const bringResults = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/results/${id}`, config);
+}

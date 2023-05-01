@@ -115,7 +115,7 @@ const { token, fullUser} = credentialsRdx.credentials;
               <div>
                 <button
                   className="buttonTournamentDesign"
-                  // onClick={() => namefunction()}
+                  onClick={() => navigate("/resultsTennisMatches")}
                 >
                   Resultados
                 </button>
