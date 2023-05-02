@@ -14,7 +14,7 @@ export const Clasification = () => {
     const formatedStartDateTournament = new Date(start_date).toLocaleDateString("es-ES");
     const formatedEndDateTournament = new Date(end_date).toLocaleDateString("es-ES");
     const [classification, setClassification] = useState([]);
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,12 +22,27 @@ export const Clasification = () => {
             try {
                 const usersResponse = await bringUsersForClassification (selectedTournamentId);
                 const users = usersResponse.data.data.users;
-                setUsers(users);
+                // setUsers(users);
 
                 const classificationResponse = await bringClassification (selectedTournamentId);
                 const clasification = classificationResponse.data.data;
-                setClassification(clasification);
-                
+                // setClassification(clasification);
+
+                // Creamos un nuevo array con la información del nombre y apellidos del usuario para mostrar en el renderizado
+                const classificationWithUsers = clasification.map((ranking) => {
+                    const user = users.find((user) => user.id === ranking.user_id);
+                    if (user) {
+                        return {
+                            ...ranking,
+                            name: user.name,
+                            surname: user.surname
+                        }
+                    } else {
+                        return ranking;
+                    }
+                })
+                setClassification(classificationWithUsers)
+                setLoading(false);
             } catch (error) {
                 console.log(error);
                 setLoading(false);
@@ -35,7 +50,7 @@ export const Clasification = () => {
         }
         fetchData()
     }, [selectedTournamentId]);
-    console.log (users)
+    // console.log (users)
     console.log (classification)
   return (
     <div>Clasification</div>

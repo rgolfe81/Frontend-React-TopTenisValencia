@@ -29,7 +29,8 @@ export const ResultsTennisMatches = () => {
 
         const resultsResponse = await bringResults(selectedTournamentId, token);
         const results = resultsResponse.data.data;
-
+        
+        // Creamos un nuevo array con la información añadida de la localización y la fecha del partido, para mostrar en el renderizado
         const resultsMatches = results.map((result) => {
           const match = matches.find((match) => match.id === result.id);
           if (match) {
