@@ -23,6 +23,7 @@
 }
 .tableTennisMatches{
     width: 70%;
+    border-radius: 0.5em;
 }
 
 @media (max-width: 768px) {
