@@ -1,0 +1,39 @@
+.resultsTennisMatchesDesign{
+    min-height: 85vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    color: white;
+}
+.titleresultsTennisMatches{
+    border-bottom: 0.15em solid;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.5em;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+.titleTournamentResultsTennisMatches{
+    font-size: 1.5em;
+    font-style: italic;
+    margin-bottom: 1em;
+}
+.tableTennisMatches{
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+    .titleresultsTennisMatches {
+      font-size: 1em;
+    }
+    .titleTournamentResultsTennisMatches{
+        font-size: 1em;
+    }
+    .tableTennisMatches{
+        width: 95%;
+        font-size: 8px;
+    }
+}

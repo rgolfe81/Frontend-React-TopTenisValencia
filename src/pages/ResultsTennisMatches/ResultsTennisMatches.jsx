@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ResultsTennisMatches";
+import "./ResultsTennisMatches.css";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { tournamentIdData } from "../tournamentSlice";
@@ -10,15 +10,9 @@ import { Table } from "react-bootstrap";
 export const ResultsTennisMatches = () => {
   const navigate = useNavigate();
   const infoTournamentRdx = useSelector(tournamentIdData);
-  const { id, name, start_date, end_date } = infoTournamentRdx.infoTournament;
+  const { id, name } = infoTournamentRdx.infoTournament;
   const selectedTournamentId = id;
   const selectedTournamentName = name;
-  const formatedStartDateTournament = new Date(start_date).toLocaleDateString(
-    "es-ES"
-  );
-  const formatedEndDateTournament = new Date(end_date).toLocaleDateString(
-    "es-ES"
-  );
   const credentialsRdx = useSelector(userData);
   const { token } = credentialsRdx.credentials;
   const [tennisResults, setTennisResults] = useState([]);
@@ -32,23 +26,23 @@ export const ResultsTennisMatches = () => {
           token
         );
         const matches = matchesResponse.data.data;
-  
+
         const resultsResponse = await bringResults(selectedTournamentId, token);
         const results = resultsResponse.data.data;
-  
-        const resultsMatches = results.map(result => {
-          const match = matches.find(match => match.id === result.id);
+
+        const resultsMatches = results.map((result) => {
+          const match = matches.find((match) => match.id === result.id);
           if (match) {
             return {
               ...result,
               location: match.location,
-              date: match.date
+              date: match.date,
             };
           } else {
             return result;
           }
         });
-  
+
         setTennisResults(resultsMatches);
         setLoading(false);
       } catch (error) {
@@ -56,19 +50,17 @@ export const ResultsTennisMatches = () => {
         setLoading(false);
       }
     };
-  
+
     if (token) {
       fetchData();
     }
   }, [selectedTournamentId, token]);
-  
-
-  console.log(tennisResults);
 
   return (
-    <div className="">
-      <div className="">Resultado partidos finalizados</div>
-      <Table striped bordered className="bg-white border-3">
+    <div className="resultsTennisMatchesDesign">
+      <div className="titleresultsTennisMatches">Resultado partidos finalizados</div>
+      <div className="titleTournamentResultsTennisMatches">{selectedTournamentName}</div>
+      <Table striped bordered className="bg-white border-3 tableTennisMatches">
         <thead>
           <tr className="titleRowTable">
             <th>Fecha</th>
@@ -90,7 +82,7 @@ export const ResultsTennisMatches = () => {
                 <td>{result.location}</td>
                 <td>{`${result.player1_name} ${result.player1_surname}`}</td>
                 <td>{`${result.player2_name} ${result.player2_surname}`}</td>
-                <td>{`${result.winner_name} ${result.winner_surname}`}</td>               
+                <td>{`${result.winner_name} ${result.winner_surname}`}</td>
               </tr>
             ))
           ) : (
@@ -100,6 +92,14 @@ export const ResultsTennisMatches = () => {
           )}
         </tbody>
       </Table>
+      <button
+        className="btnTennisMatches"
+        onClick={() => {
+          navigate("/selectedTournament");
+        }}
+      >
+        Volver
+      </button>
     </div>
   );
 };
