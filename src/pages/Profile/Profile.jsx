@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 import { userData } from '../userSlice';
 import { bringProfile } from '../../services/apiCalls';
 import { Table } from 'react-bootstrap';
+import { Users } from '../Users/Users';
+import { NewTournament } from '../NewTournament/NewTournament';
+import { Navigator } from '../../common/Navigator/Navigator';
 
 export const Profile = () => {
   const [profile, setProfile] = useState([]);
@@ -32,37 +35,42 @@ export const Profile = () => {
       <div className="titleProfileDesign">
         <h4>Perfil Usuario</h4>
       </div>
-      <div className="tableProfileDesign">
-        <Table striped bordered className="bg-white border-3">
+        <Table striped bordered className="bg-white border-3 tableProfileDesign">
           <thead>
             <tr>
-              <td>Nombre</td>
+              <th className='titleRowTable'>Nombre</th>
               <td>{profile.data?.name}</td>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Apellidos</td>
+              <th className='titleRowTable'>Apellidos</th>
               <td>{profile.data?.surname}</td>
             </tr>
             <tr>
-              <td>Edad</td>
+              <th className='titleRowTable'>Edad</th>
               <td>{profile.data?.age}</td>
             </tr>
             <tr>
-              <td>Ciudad</td>
+              <th className='titleRowTable'>Ciudad</th>
               <td>{profile.data?.city}</td>
             </tr>
             <tr>
-              <td>Email</td>
+              <th className='titleRowTable'>Email</th>
               <td>{profile.data?.email}</td>
             </tr>
             <tr>
-              <td>Teléfono</td>
+              <th className='titleRowTable'>Teléfono</th>
               <td>{profile.data?.phone}</td>
             </tr>
           </tbody>
         </Table>
+      <div className="titleProfileDesign smallMargins">
+        <h5>Acciones Administrador</h5>
+      </div>
+      <div className='buttonsAdminProfile'>
+          <Navigator ruta={<span className="textNavigator">Usuarios</span>} destino={"/users"} />
+          <Navigator ruta={<span className="textNavigator">Nuevo Torneo</span>} destino={"/newTournament"} />
       </div>
     </div>
   )
