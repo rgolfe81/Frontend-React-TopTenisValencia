@@ -97,3 +97,12 @@ export const bringUsersForClassification = async (id) => {
 export const bringClassification = async (id) => {
   return await axios.get(`${root}/classification/${id}`);
 }
+
+export const addTournament = async (body, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.post(`${root}/tournaments`, body, config);
+}

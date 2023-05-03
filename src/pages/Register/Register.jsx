@@ -41,6 +41,7 @@ export const Register = () => {
 
   // Hook validación final que activa el botón de envío de datos
   const [activeForm, setActiveForm] = useState(false);
+  const [congratulations, setCongratulations] = useState("");
 
   // Manejador de cambios en la entrada de credenciales de los InputText del evento onChange
   const inputHandler = (e) => {
@@ -91,8 +92,6 @@ export const Register = () => {
     setActiveForm(true);
   });
 
-  const [congratulations, setCongratulations] = useState("");
-
   const registrame = () => {
     registerMe(credenciales)
       .then((respuesta) => {
@@ -111,7 +110,6 @@ export const Register = () => {
           }, 3000);
         }
       })
-
       .catch((error) => console.log(error));
   };
 
