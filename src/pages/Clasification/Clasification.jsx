@@ -48,7 +48,6 @@ export const Clasification = () => {
         }
         fetchData()
     }, [selectedTournamentId]);
-    console.log (classification)
 
   return (
     <div className='classificationDesign'>

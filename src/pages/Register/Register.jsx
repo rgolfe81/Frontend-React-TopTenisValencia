@@ -94,8 +94,8 @@ export const Register = () => {
 
   const registrame = () => {
     registerMe(credenciales)
-      .then((respuesta) => {
-        let nameUser = respuesta.data.data.name;
+      .then((response) => {
+        let nameUser = response.data.data.name;
         if (nameUser) {
           setCongratulations(
             `Enhorabuena ${nameUser}, te has registrado correctamente`
@@ -104,13 +104,18 @@ export const Register = () => {
             navigate("/login");
           }, 3000);
         } else {
-          setCongratulations(`Error: ${respuesta.data}`);
+          setCongratulations(`Error: ${response.data.message}`);
           setTimeout(() => {
             window.location.reload();
           }, 3000);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setCongratulations(`Error: ${error.response.data.message}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      });
   };
 
   return (

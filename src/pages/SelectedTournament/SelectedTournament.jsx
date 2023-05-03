@@ -62,13 +62,16 @@ export const SelectedTournament = () => {
           window.location.reload();
         }, 3000);
       } else {
-        setCongratulations(`Error: ${response.data}`);
+        setCongratulations(`Error: ${response.data.message}`);
         setTimeout(() => {
           window.location.reload();
         }, 3000);
       }
     } catch (error) {
-      console.error(error);
+      setCongratulations(`Error: ${error.response.data.message}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
     }
   };
 

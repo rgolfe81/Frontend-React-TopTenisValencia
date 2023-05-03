@@ -22,17 +22,12 @@ export const NewTournament = () => {
     end_dateError: "",
   });
 
-  const [newTournamentIsValid, setNewTournamentIsValid] = useState({
-    nameIsValid: false,
-    start_dateIsValid: false,
-    end_dateIsValid: false,
-  });
-
   const [activeForm, setActiveForm] = useState(false);
   const [congratulations, setCongratulations] = useState("");
   const credentialsRdx = useSelector(userData);
   const { token, fullUser } = credentialsRdx.credentials;
   const navigate = useNavigate();
+  // Estos dos hooks 'startDate' y 'endDate' solamente sirven para mostar al usuario la fecha marcada en el DatePicker
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -43,135 +38,150 @@ export const NewTournament = () => {
     }));
   };
 
-    // Manejador de cambios en la selección de fecha en el calendario, formateando la fecha
-    const handleStartDateChange = (date) => {
-        const formattedDate = dayjs(date).format('YYYY-MM-DD');
-        setNewTournament((prevState) => ({
-          ...prevState,
-          start_date: formattedDate,
-        }));
-        setStartDate(date);
-      };
-      
-      const handleEndDateChange = (date) => {
-        const formattedDate = dayjs(date).format('YYYY-MM-DD');
-        setNewTournament((prevState) => ({
-          ...prevState,
-          end_date: formattedDate,
-        }));
-        setEndDate(date);
-      };
+  // Manejador de cambios en la selección de fecha en el DatePicker, formateando la fecha
+  const handleStartDateChange = (date) => {
+    const formattedDate = dayjs(date).format("YYYY-MM-DD");
+    setNewTournament((prevState) => ({
+      ...prevState,
+      start_date: formattedDate,
+    }));
+    setStartDate(date);
+  };
 
-  // Manejador de cambios del evento onBlur
-  const inputValidate = (e) => {
-    let error = "";
-    // checkInputs es la función de chequeo de los inputs de useful.js
-    let checked = checkInputs(e.target.name, e.target.value, e.target.required);
-    error = checked.message;
-    // Manejador de cambios en las validaciones de los Input
-    setNewTournamentIsValid((prevState) => ({
+  const handleEndDateChange = (date) => {
+    const formattedDate = dayjs(date).format("YYYY-MM-DD");
+    setNewTournament((prevState) => ({
       ...prevState,
-      [e.target.name + "IsValid"]: checked.validated,
+      end_date: formattedDate,
     }));
-    // Manejador de cambios en los mensajes de error de los Input
-    setNewTournamentError((prevState) => ({
-      ...prevState,
-      [e.target.name + "Error"]: error,
-    }));
+    setEndDate(date);
   };
 
   // Comprobador de los tres hooks de newTournament que activa el botón de envío de datos
-  useEffect(() => {
-    for (let vacio in newTournament) {
-      if (newTournament[vacio] === "") {
-        setActiveForm(false);
-        return;
-      }
+
+  const validateForm = () => {
+    if (newTournament.end_date <= newTournament.start_date) {
+      setNewTournamentError((prevState) => ({
+        ...prevState,
+        start_dateError: "La fecha inicial debe ser inferior a la fecha final",
+      }));
+      return;
     }
-    for (let error in newTournamentError) {
-      if (newTournamentError[error] !== "") {
-        setActiveForm(false);
-        return;
-      }
+    if (newTournament.name === "") {
+      setNewTournamentError((prevState) => ({
+        ...prevState,
+        name: "El nombre del torneo no puede estar vacío",
+      }));
+      return;
     }
-    for (let validated in newTournamentIsValid) {
-      if (newTournamentIsValid[validated] === false) {
-        setActiveForm(false);
-        return;
-      }
+    if (newTournament.start_date === "") {
+      setNewTournamentError((prevState) => ({
+        ...prevState,
+        start_date: "La fecha inicial no puede estar vacía",
+      }));
+      return;
+    }
+    if (newTournament.end_date === "") {
+      setNewTournamentError((prevState) => ({
+        ...prevState,
+        end_date: "La fecha final no puede estar vacía",
+      }));
+      return;
     }
     setActiveForm(true);
-  });
+
+    console.log("entro en validateForm");
+    console.log(newTournamentError.start_dateError);
+  };
 
   const addNewTournament = () => {
     addTournament(newTournament, token)
-        .then((response) => {
-            if (token && fullUser.name){
-                setCongratulations(
-                    `Enhorabuena ${fullUser.name}, has creado un nuevo Torneo correctamente`
-                )
-                setTimeout(() => {
-                    navigate("/tournaments");
-                  }, 3000);
-            }
-            else {
-                setCongratulations(`Error: ${response.data}`);
-                setTimeout(() => {
-                  window.location.reload();
-                }, 3000);
-            }
-        })
-        .catch((error) => console.log(error));
-  }
+      .then((response) => {
+        if (token && fullUser.name) {
+          setCongratulations(
+            `Enhorabuena ${fullUser.name}, has creado un nuevo Torneo correctamente`
+          );
+          setTimeout(() => {
+            navigate("/tournaments");
+          }, 3000);
+        } else {
+          setCongratulations(`Error: ${response.data.message}`);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        setCongratulations(`Error: ${error.response.data.message}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      });
+  };
 
-  console.log(newTournament.start_date)
-  console.log(newTournament.end_date)
+  console.log(newTournament.start_date);
+  console.log(newTournament.end_date);
 
   return (
     <div>
-        <div>Nuevo Torneo</div>
-        <InputText
-          className={
-            newTournamentError.nameError === ""
-              ? "inputBasicDesign"
-              : "inputBasicDesign inputErrorDesign"
-          }
-          type="text"
-          maxLength="40"
-          name="name"
-          placeholder="Nombre del Torneo"
-          required={true}
-          changeFunction={(e) => inputHandler(e)}
-          blurValidateFunction={(e) => inputValidate(e)}
-        />
-    <DatePicker
-      className=""
-      name="start_date"
-      placeholderText="Introduce fecha de inicio"
-      required={true}
-      selected={startDate}
-      onChange={(date) => handleStartDateChange(date)}
-      dateFormat="dd/MM/yyyy"
-    />
-    <DatePicker
-      className=""
-      name="end_date"
-      placeholderText="Introduce fecha de fin"
-      required={true}
-      selected={endDate}
-      onChange={(date) => handleEndDateChange(date)}
-      dateFormat="dd/MM/yyyy"
-    />
-        <div
-          className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
-          onClick={
-            activeForm
-              ? () => {addNewTournament()}
-              : () => {}
-          }
-        >
-          Añadir
-        </div>
+      <div>Nuevo Torneo</div>
+      <InputText
+        className={
+          newTournamentError.nameError === ""
+            ? "inputBasicDesign"
+            : "inputBasicDesign inputErrorDesign"
+        }
+        type="text"
+        maxLength="40"
+        name="name"
+        placeholder="Nombre del Torneo"
+        required={true}
+        changeFunction={(e) => inputHandler(e)}
+        blurValidateFunction={() => validateForm()}
+      />
+      <div>{newTournamentError.nameError}</div>
+      <DatePicker
+        className={
+          newTournamentError.start_dateError === ""
+            ? "inputBasicDesign"
+            : "inputBasicDesign inputErrorDesign"
+        }
+        name="start_date"
+        placeholderText="Introduce fecha de inicio"
+        required={true}
+        selected={startDate}
+        onChange={(date) => handleStartDateChange(date)}
+        onBlur={() => validateForm()}
+        dateFormat="dd/MM/yyyy"
+      />
+      <div>{newTournamentError.start_date}</div>
+      <DatePicker
+        className={
+          newTournamentError.end_dateError === ""
+            ? "inputBasicDesign"
+            : "inputBasicDesign inputErrorDesign"
+        }
+        name="end_date"
+        placeholderText="Introduce fecha de fin"
+        required={true}
+        selected={endDate}
+        onChange={(date) => handleEndDateChange(date)}
+        onBlur={() => validateForm()}
+        dateFormat="dd/MM/yyyy"
+      />
+      <div>{newTournamentError.end_date}</div>
+      <div
+        className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
+        onClick={
+          activeForm
+            ? () => {
+                addNewTournament();
+              }
+            : () => {}
+        }
+      >
+        Añadir
+      </div>
     </div>
   );
 };

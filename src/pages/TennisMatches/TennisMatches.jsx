@@ -86,13 +86,18 @@ export const TennisMatches = () => {
             window.location.reload();
           }, 3000);
         } else {
-          setCongratulations(`Error: ${response.data}`);
+          setCongratulations(`Error: ${response.data.message}`);
           setTimeout(() => {
             window.location.reload();
           }, 3000);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setCongratulations(`Error: ${error.response.data.message}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      });
   };
 
   return (

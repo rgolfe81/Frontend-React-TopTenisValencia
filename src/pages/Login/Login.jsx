@@ -41,7 +41,7 @@ export const Login = () => {
     }));
   };
 
-  const [welcome, setWelcome] = useState("");
+  const [congratulations, setCongratulations] = useState("");
 
   useEffect(() => {
     if (credentialsRdx.credentials?.token) {
@@ -93,12 +93,11 @@ export const Login = () => {
 
   const logeame = () => {
     logMe(credenciales)
-      .then((respuesta) => {
+      .then((response) => {
         let datosBackend = {
-          token: respuesta.data.token,
-          fullUser: respuesta.data.user
+          token: response.data.token,
+          fullUser: response.data.user
         };
-        console.log(respuesta);
 
         // Guardado en REDUX
         dispatch(login({ credentials: datosBackend }));
@@ -106,19 +105,24 @@ export const Login = () => {
         // Mensaje después de Login
         let nameUser = datosBackend.fullUser.name;
         if (datosBackend.token) {
-          setWelcome(`Hola ${nameUser}, has iniciado sesión correctamente`);
+          setCongratulations(`Hola ${nameUser}, has iniciado sesión correctamente`);
           setTimeout(() => {
             navigate("/tournaments");
           }, 3000);
         } else {
-          setWelcome(`Error: ${respuesta.data}`);
+          setCongratulations(`Error: ${response.data.message}`);
           setTimeout(() => {
             window.location.reload();
           }, 3000);
         }
       })
 
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setCongratulations(`Error: ${error.response.data.message}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      });
   };
 
   return (
@@ -127,8 +131,8 @@ export const Login = () => {
         <div className="titleLoginDesign">
           <h4>Iniciar sesión</h4>
         </div>
-        {welcome !== "" ? (
-          <div>{welcome}</div>
+        {congratulations !== "" ? (
+          <div>{congratulations}</div>
         ) : (
           <>
             <div>
