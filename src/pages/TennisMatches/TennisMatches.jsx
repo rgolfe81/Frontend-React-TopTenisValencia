@@ -11,6 +11,8 @@ import { tournamentIdData } from "../tournamentSlice";
 import { userData } from "../userSlice";
 import Calendar from "react-calendar";
 import { Col, Container, Row } from "react-bootstrap";
+import { BsFillCalendar2DateFill } from "react-icons/bs";
+import { SlLocationPin } from "react-icons/sl";
 
 export const TennisMatches = () => {
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ export const TennisMatches = () => {
 
   // Manejador de cambios en la selección de fecha en el calendario, formateando la fecha
   const handleDateChange = (date) => {
-    const formattedDate = dayjs(date).format('YYYY-MM-DD');
+    const formattedDate = dayjs(date).format("YYYY-MM-DD");
     setNewTennisMatch((prevState) => ({
       ...prevState,
       date: formattedDate,
@@ -105,9 +107,9 @@ export const TennisMatches = () => {
       <div className="titleTennisMatchDesign">
         <h4>{selectedtournamentName}</h4>
       </div>
-      <div className="mb-4">
-        desde {formatedStartDateTournament} hasta {formatedEndDateTournament}
-      </div>
+      <h5 className="mb-4">
+        {formatedStartDateTournament} a {formatedEndDateTournament}
+      </h5>
       {congratulations !== "" ? (
         <div className="tennisMatchMessageDesign">{congratulations}</div>
       ) : (
@@ -117,6 +119,7 @@ export const TennisMatches = () => {
               <Col sm={12} md={6} className="col1TennisMatches">
                 <div className="calendarDesign">
                   <Calendar
+                    className="incalendarDesign"
                     onChange={(date) => handleDateChange(date)}
                     value={dateForTransform}
                   />
@@ -124,8 +127,8 @@ export const TennisMatches = () => {
               </Col>
               <Col sm={12} md={6} className="col2TennisMatches">
                 <div className="dateSelected">
-                  Fecha seleccionada:{" "}
-                  {dateForTransform.toLocaleDateString("es-ES")}
+                  <BsFillCalendar2DateFill className="iconDesign" /> Fecha
+                  seleccionada: {dateForTransform.toLocaleDateString("es-ES")}
                 </div>
 
                 {/* Verifica si los datos de los jugadores han sido cargados */}
@@ -134,7 +137,7 @@ export const TennisMatches = () => {
                 ) : (
                   <>
                     <div className="labelPlayerAlign">
-                      <span>Jugador 1</span>
+                      <span className="textPlayer">Jugador 1</span>
                       <select
                         className="inputsTennisMatchesDesign longSelect"
                         name="player1_user_id"
@@ -149,7 +152,7 @@ export const TennisMatches = () => {
                       </select>
                     </div>
                     <div className="labelPlayerAlign">
-                      <span>Jugador 2</span>
+                      <span className="textPlayer"> Jugador 2</span>
                       <select
                         className="inputsTennisMatchesDesign longSelect"
                         name="player2_user_id"
@@ -165,14 +168,17 @@ export const TennisMatches = () => {
                     </div>
                   </>
                 )}
-                <input
-                  className="inputsTennisMatchesDesign"
-                  type="text"
-                  name="location"
-                  placeholder="Introduce localización"
-                  maxLength="40"
-                  onChange={(e) => inputHandler(e)}
-                ></input>
+                <div className="labelPlayerAlign">
+                <span className="textPlayer">Lugar</span>
+                  <input
+                    className="inputsTennisMatchesDesign longSelect"
+                    type="text"
+                    name="location"
+                    placeholder="Introduce localización"
+                    maxLength="40"
+                    onChange={(e) => inputHandler(e)}
+                  ></input>
+                </div>
                 <button
                   className="btnTennisMatches addMatchBtn"
                   onClick={() => {

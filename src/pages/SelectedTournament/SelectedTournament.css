@@ -23,29 +23,31 @@
     align-items: center;
   }
   .boxImageTournamentDesign{
+    height: 20em;
     display: flex;
     justify-content: end;
     align-items: center;
     margin-top: 2em;
   }
   .imgTournamentDesign {
-    width: 25em;
+    width: 30em;
     border-radius: 1em;
   }
 
   .buttonTournamentDesign{
-    background-color: rgb(246, 246, 71);
+    height: 2.2em;
+    background-color: white;
+    border: white;
     border-radius: 0.5em;
-    border: white solid 2px;
     width: 20em;
 
   }
   .buttonTournamentDesign:hover{
     background-color: yellow;
-    border: yellow solid 2px;
   }
 
   .boxButtonsDesign{
+    height: 20em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,11 +66,14 @@
       }
     .boxImageTournamentDesign{
         justify-content: center;
+        height: auto;
     }
     .boxButtonsDesign{
         align-items: center;
+        height: auto;
     }
     .buttonTournamentDesign{
         width: 13em;
+        height: 1.5em;
     }
 }

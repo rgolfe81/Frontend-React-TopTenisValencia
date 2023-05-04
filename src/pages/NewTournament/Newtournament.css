@@ -30,8 +30,15 @@
     align-items: center;
   }
 
+  .longDatePicker{
+    width: 15em;
+  }
+
   @media (max-width: 768px) {
     .boxDesignLogin {
       max-width: 90vw;
+    }
+    .longDatePicker{
+      width: 10em;
     }
   }

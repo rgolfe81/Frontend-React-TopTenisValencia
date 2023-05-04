@@ -14,12 +14,21 @@
   .tableResultsDesign{
     margin-top: 2em;
     max-width: 70%;
+  }
 
+  .sectionBtnsBottomTable{
+    display: flex;
+    width: 95%;
+    justify-content: space-around;
+    align-items: end;
   }
 
   @media (max-width: 768px) {
     .tableResultsDesign {
       font-size: 10px;
       max-width: 95%
+    }
+    .sectionBtnsBottomTable{
+      width: 90%;
     }
 }

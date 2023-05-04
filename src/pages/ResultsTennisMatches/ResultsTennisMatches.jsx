@@ -59,15 +59,15 @@ export const ResultsTennisMatches = () => {
 
   return (
     <div className="resultsTennisMatchesDesign">
-      <div className="titleresultsTennisMatches">
-        Resultado partidos finalizados
-      </div>
-      <div className="titleTournamentResultsTennisMatches">
+      <h4 className="titleresultsTennisMatches">
+        Resultado Partidos Finalizados
+      </h4>
+      <h5 className="titleTournamentResultsTennisMatches">
         {selectedTournamentName}
-      </div>
+      </h5>
       <Table striped bordered className="bg-white border-3 tableTennisMatches">
         <thead>
-          <tr className="titleRowTable">
+          <tr className="titleRowTable text-center">
             <th>Fecha</th>
             <th>Lugar</th>
             <th>Jugador 1</th>
@@ -83,7 +83,7 @@ export const ResultsTennisMatches = () => {
           ) : tennisResults.length > 0 ? (
             tennisResults.map((result) => (
               <tr key={result.id}>
-                <td>{new Date(result.date).toLocaleDateString("es-ES")}</td>
+                <td className="text-center">{new Date(result.date).toLocaleDateString("es-ES")}</td>
                 <td>{result.location}</td>
                 <td>{`${result.player1_name} ${result.player1_surname}`}</td>
                 <td>{`${result.player2_name} ${result.player2_surname}`}</td>

@@ -28,23 +28,28 @@
   padding: 1em;
   border-radius: 0.5em;
   text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .col1TennisMatches {
   display: flex;
   justify-content: end;
+  height: 20em;
 }
 
 .col2TennisMatches {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  height: 20em;
 }
 
 .btnTennisMatches {
   background-color: rgb(246, 246, 71);
   border-radius: 0.5em;
   border: white solid 2px;
+  height: 2.5em;
 }
 
 .btnTennisMatches:hover {
@@ -63,6 +68,7 @@
 
 .inputsTennisMatchesDesign {
   border-radius: 0.5em;
+  height: 2.5em;
 }
 
 .longSelect {
@@ -78,19 +84,44 @@
   justify-content: space-between;
 }
 
+.incalendarDesign{
+  padding: 1em;
+}
+.dateSelected{
+  font-size: 1.5em;
+}
+.textPlayer{
+  font-size: 1.5em;
+}
+.react-calendar__month-view__days__day {
+  background-color: white;
+  color: black;
+  font-size: 20px;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: blue;
+  font-weight: bold;
+}
+.iconDesign{
+  color: white;
+}
+
 @media (max-width: 768px) {
   .calendarDesign {
     font-size: 11px;
   }
   .col1TennisMatches {
     justify-content: center;
+    height: auto;
   }
   .col2TennisMatches {
     justify-content: center;
+    height: auto;
   }
   .dateSelected {
     display: flex;
     justify-content: center;
+    font-size: 1em;
   }
   .containerTennisMatches {
     width: 100%;
@@ -100,5 +131,17 @@
   }
   .titleTennisMatchDesign {
     width: 90%;
+  }
+  .inputsTennisMatchesDesign{
+    height: auto;
+  }
+  .btnTennisMatches{
+    height: auto;
+  }
+  .textPlayer{
+    font-size: 1em;
+  }
+  .react-calendar__month-view__days__day{
+    font-size: 1em;
   }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SelectedTournament.css";
+import dayjs from "dayjs";
 import {
   addMeToTournament,
   bringTournamentById,
@@ -15,7 +16,9 @@ export const SelectedTournament = () => {
   const [congratulations, setCongratulations] = useState("");
   const [tournamentById, setTournamentById] = useState();
   const infoTournamentRdx = useSelector(tournamentIdData);
-  const { id } = infoTournamentRdx.infoTournament;
+  const { id, start_date, end_date } = infoTournamentRdx.infoTournament;
+  const selectedTournamentStartDate = start_date;
+  const selectedTournamentEndDate = end_date;
   const selectedTournamentID = id;
   const navigate = useNavigate();
   const credentialsRdx = useSelector(userData);
@@ -80,10 +83,9 @@ export const SelectedTournament = () => {
       <div className="titleTournamentDesign">
         <h4>{tournamentById.data.name}</h4>
       </div>
-      <div>
-        desde {tournamentById.data.start_date} hasta{" "}
-        {tournamentById.data.end_date}
-      </div>
+      <h5>
+        {new Date(selectedTournamentStartDate).toLocaleDateString("es-ES")} a {new Date(selectedTournamentEndDate).toLocaleDateString("es-ES")}
+      </h5>
       {congratulations !== "" ? (
         <div className="tournamentMessageDesign">{congratulations}</div>
       ) : (

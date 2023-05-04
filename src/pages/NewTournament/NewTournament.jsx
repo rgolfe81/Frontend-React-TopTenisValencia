@@ -145,8 +145,6 @@ export const NewTournament = () => {
         }, 3000);
       });
   };
-  console.log(`hook valor fecha inicio ${newTournament.start_date}`);
-  console.log(`hook valor fecha final ${newTournament.end_date}`);
 
   return (
     <div className="newTournamentDesign">
@@ -159,7 +157,6 @@ export const NewTournament = () => {
         ) : (
           <>
             <div>
-              <BsPencilSquare className="iconDesign" />
               <InputText
                 className={
                   newTournamentError.nameError === ""
@@ -180,11 +177,11 @@ export const NewTournament = () => {
               <DatePicker
                 className={
                   newTournamentError.intervalDatesError === ""
-                    ? "inputBasicDesign"
-                    : "inputBasicDesign inputErrorDesign"
+                    ? "inputBasicDesign longDatePicker"
+                    : "inputBasicDesign inputErrorDesign longDatePicker"
                 }
                 name="start_date"
-                placeholderText="Introduce fecha de inicio"
+                placeholderText="Fecha de inicio"
                 required={true}
                 selected={startDate}
                 onChange={(date) => handleStartDateChange(date)}
@@ -196,11 +193,11 @@ export const NewTournament = () => {
               <DatePicker
                 className={
                   newTournamentError.intervalDatesError === ""
-                    ? "inputBasicDesign"
-                    : "inputBasicDesign inputErrorDesign"
+                    ? "inputBasicDesign longDatePicker"
+                    : "inputBasicDesign inputErrorDesign longDatePicker"
                 }
                 name="end_date"
-                placeholderText="Introduce fecha de fin"
+                placeholderText="Fecha final"
                 required={true}
                 selected={endDate}
                 onChange={(date) => handleEndDateChange(date)}

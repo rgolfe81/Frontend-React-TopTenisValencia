@@ -43,7 +43,7 @@ export const Tournaments = () => {
       </div>
       <Table striped bordered className="bg-white border-3 tableTournamentDesign">
         <thead>
-          <tr className="titleRowTable">
+          <tr className="titleRowTable text-center">
             <th>Torneo</th>
             <th>Inicio</th>
             <th>Fin</th>
@@ -60,9 +60,9 @@ export const Tournaments = () => {
             allTournaments.map((tournament) => (
               <tr key={tournament.id}>
                 <td>{tournament.name}</td>
-                <td>{tournament.start_date}</td>
-                <td>{tournament.end_date}</td>
-                <td><button className="goButtonDesign" 
+                <td className="text-center">{new Date(tournament.start_date).toLocaleDateString("es-ES")}</td>
+                <td className="text-center">{new Date(tournament.end_date).toLocaleDateString("es-ES")}</td>
+                <td className="text-center"><button className="goButtonDesign" 
                 onClick={() => goToSelectedTournament(tournament)}
                 >Ir</button></td>
               </tr>

@@ -51,11 +51,10 @@ export const Clasification = () => {
 
   return (
     <div className='classificationDesign'>
-        <div className='titleClassification'>CLASIFICACIÓN</div>
-        <div className='titleTournamentClassification'>
+        <h4 className='titleClassification'>CLASIFICACIÓN</h4>
+        <h5 className='titleTournamentClassification'>
             <div>{selectedtournamentName}</div>
-            <div className='titleDataTournament'>{`${formatedStartDateTournament} a ${formatedEndDateTournament}`}</div>
-        </div>
+        </h5>
         <Table striped bordered className='bg-white border-3 tableClassification'>
             <thead>
                 <tr className="titleRowTable text-center">

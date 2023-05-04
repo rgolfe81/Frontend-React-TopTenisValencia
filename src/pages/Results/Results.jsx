@@ -8,6 +8,7 @@ import {
   updateWinnerToResult,
 } from "../../services/apiCalls";
 import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const Results = () => {
   const infoTournamentRdx = useSelector(tournamentIdData);
@@ -24,6 +25,7 @@ export const Results = () => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
   const [selectedMatchId, setSelectedMatchId] = useState(null);
   const [congratulations, setCongratulations] = useState("");
+  const navigate = useNavigate()
 
   // Manejador de cambios en los input/select
   const inputHandler = (e) => {
@@ -99,7 +101,7 @@ export const Results = () => {
   return (
     <div className="playersTournamentsDesign">
       <div className="titleResultsDesign">
-        <h5>Actualizar ganador</h5>
+        <h4>Actualizar Ganador</h4>
       </div>
       <h5>{selectedTournamentName}</h5>
       {congratulations !== "" ? (
@@ -186,15 +188,24 @@ export const Results = () => {
               )}
             </tbody>
           </Table>
-
+          <div className="sectionBtnsBottomTable">
           <button
-            className="btnTennisMatches addMatchBtn"
-            onClick={() => {
-              sendUpdateWinnerToResult();
-            }}
-          >
-            Enviar
-          </button>
+              className="btnTennisMatches"
+              onClick={() => {
+                navigate("/selectedTournament");
+              }}
+            >
+              Volver
+            </button>
+            <button
+              className="btnTennisMatches addMatchBtn"
+              onClick={() => {
+                sendUpdateWinnerToResult();
+              }}
+            >
+              Enviar
+            </button>
+          </div>
         </>
       )}
     </div>

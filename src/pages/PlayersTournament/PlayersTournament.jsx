@@ -5,6 +5,7 @@ import { tournamentIdData } from "../tournamentSlice";
 import { userData } from "../userSlice";
 import { bringUsersByTournament } from "../../services/apiCalls";
 import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const PlayersTournament = () => {
   const infoTournamentRdx = useSelector(tournamentIdData);
@@ -15,6 +16,7 @@ export const PlayersTournament = () => {
   const { token } = credentialsRdx.credentials;
   const [playersTournament, setPlayersTournament] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +42,7 @@ export const PlayersTournament = () => {
   return (
     <div className="playersTournamentsDesign">
       <div className="titlePlayersTournamentsDesign">
-        <h4>Jugadores inscritos</h4>
+        <h4>Jugadores Inscritos</h4>
       </div>
       <h5>{selectedTournamentName}</h5>
       <Table
@@ -49,7 +51,7 @@ export const PlayersTournament = () => {
         className="bg-white border-3 tablePlayersTournamentsDesign"
       >
         <thead>
-          <tr className="titleRowTable">
+          <tr className="titleRowTable text-center">
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Edad</th>
@@ -69,10 +71,10 @@ export const PlayersTournament = () => {
               <tr key={player.id}>
                 <td>{player.name}</td>
                 <td>{player.surname}</td>
-                <td>{player.age}</td>
+                <td className="text-center">{player.age}</td>
                 <td>{player.city}</td>
                 <td>{player.email}</td>
-                <td>{player.phone}</td>
+                <td className="text-center">{player.phone}</td>
               </tr>
             ))
           ) : (
@@ -82,6 +84,14 @@ export const PlayersTournament = () => {
           )}
         </tbody>
       </Table>
+      <button
+        className="btnTennisMatches"
+        onClick={() => {
+          navigate("/selectedTournament");
+        }}
+      >
+        Volver
+      </button>
     </div>
   );
 };
