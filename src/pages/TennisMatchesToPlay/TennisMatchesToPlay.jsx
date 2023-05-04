@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./TennisMatchesToPlay.css"
 import { useNavigate } from 'react-router-dom'
-import { bringResultsForMatches, bringTennisMatches } from '../../services/apiCalls';
+import { bringResultsForMatches, bringTennisMatches, deleteTennisMatch } from '../../services/apiCalls';
 import { useSelector } from 'react-redux';
 import { tournamentIdData } from '../tournamentSlice';
 import { userData } from '../userSlice';
@@ -19,6 +19,7 @@ export const TennisMatchesToPlay = () => {
     const nameUser = fullUser.name;
     const [loading, setLoading] = useState(true);
     const [allTennisMatches, setAllTennisMatches] = useState([]);
+    const [congratulations, setCongratulations] = useState("")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,7 +59,25 @@ export const TennisMatchesToPlay = () => {
         }
       }, [selectedTournamentId, token]);
     
-      console.log(allTennisMatches)
+    const deleteThisTennisMatch = async (id) => {
+        const confirm = window.confirm("¿Estás seguro de que quieres eliminar esta partido de tenis?");
+        if (confirm){
+            try {
+                await deleteTennisMatch (id, token);
+                const updateAllTennisMatches = allTennisMatches.filter((match) => match.id !== id);
+                setAllTennisMatches(updateAllTennisMatches);
+                setCongratulations(`Enhorabuena ${nameUser}, has eliminado el partido de tenis correctamente`);
+                setTimeout(() => {
+                    window.location.reload();
+                  }, 3000);
+            } catch (error) {
+                setCongratulations(`Error: ${error.response.data.message}`);
+                setTimeout(() => {
+                  window.location.reload();
+                }, 3000);
+            }
+        }
+    }
 
   return (
     <div className="pageBaseDesign">
@@ -68,6 +87,10 @@ export const TennisMatchesToPlay = () => {
       <div className="titleTournamentBase">
         <h5>{selectedTournamentName}</h5>
       </div>
+      {congratulations != "" ? (
+        <div>{congratulations}</div>
+      ) : (
+        <>
       <Table striped bordered className="bg-white border-3 tableAllTennisMatches">
         <thead>
           <tr className="titleRowTable text-center">
@@ -92,7 +115,7 @@ export const TennisMatchesToPlay = () => {
                 <td>{`${match.player1_name} ${match.player1_surname}`}</td>
                 <td>{`${match.player2_name} ${match.player2_surname}`}</td>
                 <td>{(match.winner_name && match.winner_surname) ? `${match.winner_name} ${match.winner_surname}` : ""}</td>
-                <td className='text-center'><button className='goButtonDesign goButtonDelete'>Eliminar</button></td>
+                <td className='text-center'><button className='goButtonDesign goButtonDelete' onClick={() => deleteThisTennisMatch(match.id)}>Eliminar</button></td>
               </tr>
             ))
           ) : (
@@ -110,6 +133,8 @@ export const TennisMatchesToPlay = () => {
       >
         Volver
       </button>
+      </>
+    )}
     </div>
   )
 }

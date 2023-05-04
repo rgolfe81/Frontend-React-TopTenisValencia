@@ -124,3 +124,12 @@ export const bringResultsForMatches = async (id, token) => {
   };
   return await axios.get(`${root}/resultsForMatches/${id}`, config);
 }
+
+export const deleteTennisMatch = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.delete(`${root}/tennisMatches/${id}`, config);
+}
