@@ -14,7 +14,6 @@ import {
   BsPencilSquare,
 } from "react-icons/bs";
 import "./NewTournament.css";
-import { Form, InputGroup } from "react-bootstrap";
 
 export const NewTournament = () => {
   const [newTournament, setNewTournament] = useState({

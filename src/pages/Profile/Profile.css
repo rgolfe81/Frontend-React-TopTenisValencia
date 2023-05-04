@@ -30,6 +30,16 @@
   color: white;
 }
 
+.btnNavigatorProfile{
+  border-radius: 0.5em;
+  border: solid 2px;
+  background-color: blue;
+  color: white;
+}
+.btnNavigatorProfile:hover{
+  border: blue solid 2px;
+}
+
 .smallMargins{
   margin: 1em;
 }

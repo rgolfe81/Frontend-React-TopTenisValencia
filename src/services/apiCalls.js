@@ -106,3 +106,12 @@ export const addTournament = async (body, token) => {
   };
   return await axios.post(`${root}/tournaments`, body, config);
 }
+
+export const bringAllUsers = async (token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/users`, config);
+}

@@ -74,6 +74,7 @@ export const Tournaments = () => {
           )}
         </tbody>
       </Table>
+<button className="btnNewTournament" onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
     </div>
   );
 };

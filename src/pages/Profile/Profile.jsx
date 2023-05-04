@@ -7,11 +7,13 @@ import { Table } from 'react-bootstrap';
 import { Users } from '../Users/Users';
 import { NewTournament } from '../NewTournament/NewTournament';
 import { Navigator } from '../../common/Navigator/Navigator';
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
   const [profile, setProfile] = useState([]);
   const credentialsRdx = useSelector(userData);
   const { token } = credentialsRdx.credentials;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,8 +71,11 @@ export const Profile = () => {
         <h5>Acciones Administrador</h5>
       </div>
       <div className='buttonsAdminProfile'>
-          <Navigator ruta={<span className="textNavigator">Usuarios</span>} destino={"/users"} />
-          <Navigator ruta={<span className="textNavigator">Nuevo Torneo</span>} destino={"/newTournament"} />
+        <button className="btnNavigatorProfile" onClick={() => {
+          navigate("/users");
+        }}>
+          Ver todos Usuarios
+        </button>
       </div>
     </div>
   )
