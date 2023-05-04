@@ -1,0 +1,26 @@
+.titleTournamentBase{
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
+.tableAllTennisMatches{
+    max-width: 80%;
+}
+
+.goButtonDelete{
+    background-color: red;
+    width: auto;
+}
+.goButtonDelete:hover{
+    border-color: red;
+}
+
+@media (max-width: 768px){
+    .tableAllTennisMatches{
+        max-width: 95%;
+        font-size: 7px;
+    }
+    .goButtonDelete{
+        font-size: 7px;
+}
+}
