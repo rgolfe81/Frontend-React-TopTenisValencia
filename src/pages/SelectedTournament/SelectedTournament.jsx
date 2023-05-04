@@ -120,7 +120,8 @@ export const SelectedTournament = () => {
                   <div>
                     <button
                       className="buttonTournamentDesign"
-                      // onClick={() => namefunction()}
+                      matchesToPlay
+                      onClick={() => navigate("/matchesToPlay")}
                     >
                       Partidos
                     </button>
@@ -130,7 +131,7 @@ export const SelectedTournament = () => {
                       className="buttonTournamentDesign"
                       onClick={() => navigate("/result")}
                     >
-                      Introducir resultado
+                      Introducir mis resultados
                     </button>
                   </div>
                   <div>
