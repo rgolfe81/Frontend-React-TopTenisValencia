@@ -115,3 +115,12 @@ export const bringAllUsers = async (token) => {
   };
   return await axios.get(`${root}/users`, config);
 }
+
+export const bringResultsForMatches = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/resultsForMatches/${id}`, config);
+}
