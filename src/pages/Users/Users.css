@@ -1,0 +1,29 @@
+.pageBaseDesign{
+    min-height: 85vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    color: white;
+}
+
+.titleBaseDesign {
+    border-bottom: 0.15em solid white;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  .tableUsers{
+    width: 80%;
+  }
+
+  @media (max-width: 768px){
+    .tableUsers{
+        max-width: 95%;
+        font-size: 4px;
+    }
+  }
