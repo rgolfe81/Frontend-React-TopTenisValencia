@@ -122,7 +122,6 @@ export const SelectedTournament = () => {
                   <div>
                     <button
                       className="buttonTournamentDesign"
-                      matchesToPlay
                       onClick={() => navigate("/matchesToPlay")}
                     >
                       Partidos

@@ -18,6 +18,7 @@
   background-color: blue;
   color: white;
   height: 2.2em;
+  margin-bottom: 1em;
 }
 .btnNewTournament:hover{
   border: blue solid 2px;

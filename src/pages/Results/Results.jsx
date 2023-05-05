@@ -25,7 +25,7 @@ export const Results = () => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
   const [selectedMatchId, setSelectedMatchId] = useState(null);
   const [congratulations, setCongratulations] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Manejador de cambios en los input/select
   const inputHandler = (e) => {
@@ -131,7 +131,6 @@ export const Results = () => {
                 resultWithPlayers.map((result) => (
                   <tr key={result.id}>
                     <td className="text-center">
-                      {result.tennis_match_id}{" "}
                       <input
                         type="checkbox"
                         id={result.tennis_match_id}
@@ -146,37 +145,34 @@ export const Results = () => {
                       {result.player2_name} {result.player2_surname}
                     </td>
 
-                    {result.winner_user_id === null ? (
-                      <td>
-                        <div className="labelPlayerAlign">
-                          {selectedCheckboxes[result.tennis_match_id] ? (
-                            <select
-                              className="inputsTennisMatchesDesign"
-                              name="winner_user_id"
-                              onChange={(e) => inputHandler(e)}
+                    <td>
+                      <div className="labelPlayerAlign">
+                        {selectedCheckboxes[result.tennis_match_id] ? (
+                          <select
+                            className="inputsTennisMatchesDesign"
+                            name="winner_user_id"
+                            onChange={(e) => inputHandler(e)}
+                          >
+                            <option value="">Seleccione ganador</option>
+                            <option
+                              key={result.player1_user_id}
+                              value={result.player1_user_id}
                             >
-                              <option value="">Seleccione ganador</option>
-                              <option
-                                key={result.player1_user_id}
-                                value={result.player1_user_id}
-                              >
-                                {result.player1_name} {result.player1_surname}
-                              </option>
-                              <option
-                                key={result.player2_user_id}
-                                value={result.player2_user_id}
-                              >
-                                {result.player2_name} {result.player2_surname}
-                              </option>
-                            </select>
-                          ) : null}
-                        </div>
-                      </td>
-                    ) : (
-                      <td>
-                        {result.winner_name} {result.winner_surname}
-                      </td>
-                    )}
+                              {result.player1_name} {result.player1_surname}
+                            </option>
+                            <option
+                              key={result.player2_user_id}
+                              value={result.player2_user_id}
+                            >
+                              {result.player2_name} {result.player2_surname}
+                            </option>
+                          </select>
+                        ) : (
+                        <div>
+                          {result.winner_name} {result.winner_surname}
+                        </div>)}
+                      </div>
+                    </td>
                   </tr>
                 ))
               ) : (
@@ -189,7 +185,7 @@ export const Results = () => {
             </tbody>
           </Table>
           <div className="sectionBtnsBottomTable">
-          <button
+            <button
               className="btnTennisMatches"
               onClick={() => {
                 navigate("/selectedTournament");

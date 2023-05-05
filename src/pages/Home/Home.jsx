@@ -18,10 +18,11 @@ export const Home = () => {
               Para participar debes <a href="/register"><strong>registrarte</strong></a>, para poder acceder a los torneos disponibles e inscribirte al que quieras jugar.
               Cuando empiece cada torneo, tendrás acceso al calendario de partidos, a la información de tus rivales para poder confirmar el día del partido, a los resultados de los partidos jugados y a la clasificación del torneo.
               Cuando finalices para partido, los participantes son los encargados de actualizar el resultado de cada partido disputado.
+              Si no estás registrado, solamente tendrás acceso a listar los torneos de tenis existentes.
             </p>
             <h5 className="text-decoration-underline">Pistas de tenis</h5>
             <p>
-              Los partidos de tenis se jugarán en polideportivos municipales de los alrrededores de Valencia, donde los participantes serán los encargados de confirmar la asistencia en el lugar donde se vaya a disputar el partido
+              Los partidos de tenis se jugarán en polideportivos municipales de los alrrededores de Valencia, donde los participantes serán los encargados de confirmar la asistencia en el lugar donde se vaya a disputar el partido.
             </p>
             <img src={Pista_tenis} alt="Imangen Pista Tenis" className="imgHome"></img>
         </Container>
