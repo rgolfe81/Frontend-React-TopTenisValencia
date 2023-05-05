@@ -128,11 +128,11 @@ export const Login = () => {
   return (
     <div className="pageBaseDesign">
       <div className="boxDesignLogin">
-        <div className="titleBaseDesign">
-          <h4>Iniciar sesión</h4>
+        <div className="titleBaseDesign text-decoration-underline text-dark">
+          <h4 className="text-dark">Iniciar sesión</h4>
         </div>
         {congratulations !== "" ? (
-          <div>{congratulations}</div>
+          <div className="text-dark mt-3 mb-2 fs-5">{congratulations}</div>
         ) : (
           <>
             <div>
@@ -152,7 +152,7 @@ export const Login = () => {
                 blurValidateFunction={(e) => inputValidate(e)}
               />
             </div>
-            <div>{credencialesError.emailError}</div>
+            <div className="text-dark">{credencialesError.emailError}</div>
             <div>
               <FaLock className="iconDesign" />
               <InputText
@@ -170,7 +170,9 @@ export const Login = () => {
                 blurValidateFunction={(e) => inputValidate(e)}
               />
             </div>
-            <div>{credencialesError.passwordError}</div>
+            <div className="text-dark">{credencialesError.passwordError}</div>
+            <div className="fs-5 mt-2 text-dark textRegister">Si no estás registrado, sigue este enlace para <a href="/register">registrarte</a>
+            </div>
             <div
               className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
               onClick={

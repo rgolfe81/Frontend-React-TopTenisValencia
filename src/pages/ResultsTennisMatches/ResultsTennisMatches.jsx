@@ -59,10 +59,10 @@ export const ResultsTennisMatches = () => {
 
   return (
     <div className="pageBaseDesign">
-      <h4 className="titleBaseDesign">
-        Resultado Partidos Finalizados
+      <h4 className="titleBaseDesign text-decoration-underline">
+        Resultados Partidos Finalizados
       </h4>
-      <h5>
+      <h5 className="mb-3">
         {selectedTournamentName}
       </h5>
       <Table striped bordered className="bg-white border-3 tableTennisMatches">

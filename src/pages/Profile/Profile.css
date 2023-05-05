@@ -1,5 +1,5 @@
-  .tableProfileDesign{
-    width: 50%;
+.tableProfileDesign{
+    width: 40%;
 }
 
 .titleRowTable{
@@ -19,10 +19,6 @@
 }
 .btnNavigatorProfile:hover{
   border: blue solid 2px;
-}
-
-.smallMargins{
-  margin: 1em;
 }
 
 @media (max-width: 768px){

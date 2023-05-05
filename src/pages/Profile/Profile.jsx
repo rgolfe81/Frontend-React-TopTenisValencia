@@ -35,7 +35,7 @@ export const Profile = () => {
   return (
     <div className='pageBaseDesign'>
       <div className="titleBaseDesign">
-        <h4>Perfil Usuario</h4>
+        <h4 className='text-decoration-underline'>Perfil Usuario</h4>
       </div>
         <Table striped bordered className="bg-white border-3 tableProfileDesign">
           <thead>
@@ -67,8 +67,8 @@ export const Profile = () => {
             </tr>
           </tbody>
         </Table>
-      <div className="titleProfileDesign smallMargins">
-        <h5>Acciones Administrador</h5>
+      <div>
+        <h5 className='text-decoration-underline m-4'>Acciones Administrador</h5>
       </div>
       <div className='buttonsAdminProfile'>
         <button className="btnNavigatorProfile" onClick={() => {

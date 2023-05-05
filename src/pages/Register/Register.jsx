@@ -121,11 +121,11 @@ export const Register = () => {
   return (
     <div className="pageBaseDesign">
       <div className="boxDesignRegister">
-        <div className="titleBaseDesign">
-          <h4>Registro Usuario</h4>
+        <div className="titleBaseDesign text-decoration-underline text-dark">
+          <h4 className="text-dark">Registro Usuario</h4>
         </div>
         {congratulations !== "" ? (
-          <div>{congratulations}</div>
+          <div className="text-dark mt-3 mb-2 fs-5">{congratulations}</div>
         ) : (
           <>
             <div>
@@ -145,7 +145,7 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.nameError}</div>
+        <div className="text-dark">{credencialesError.nameError}</div>
         <div>
               <FaUserPlus className="iconDesign" />
         <InputText
@@ -163,7 +163,7 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.surnameError}</div>
+        <div className="text-dark">{credencialesError.surnameError}</div>
         <div>
               <FaEnvelope className="iconDesign" />
         <InputText
@@ -181,7 +181,7 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.emailError}</div>
+        <div className="text-dark">{credencialesError.emailError}</div>
         <div>
               <FaLock className="iconDesign" />
         <InputText
@@ -199,7 +199,7 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.passwordError}</div>
+        <div className="text-dark">{credencialesError.passwordError}</div>
         <div>
               <FaCity className="iconDesign" />
         <InputText
@@ -217,7 +217,7 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.cityError}</div>
+        <div className="text-dark">{credencialesError.cityError}</div>
         <div>
               <FaBirthdayCake className="iconDesign" />
         <InputText
@@ -235,7 +235,7 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.ageError}</div>
+        <div className="text-dark">{credencialesError.ageError}</div>
         <div>
               <FaPhoneSquareAlt className="iconDesign" />
         <InputText
@@ -253,7 +253,10 @@ export const Register = () => {
           blurValidateFunction={(e) => inputValidate(e)}
         />
         </div>
-        <div>{credencialesError.phoneError}</div>
+        <div className="text-dark">{credencialesError.phoneError}</div>
+        <div className="text-dark fs-5 mt-2 textRegister">
+          Si ya eres un usuario registrado, sigue este enlace para <a href="/login">iniciar sesión</a>
+        </div>
         <div
           className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
           onClick={

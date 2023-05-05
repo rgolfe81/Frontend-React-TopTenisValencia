@@ -101,11 +101,11 @@ export const Results = () => {
   return (
     <div className="pageBaseDesign">
       <div className="titleBaseDesign">
-        <h4>Actualizar Ganador</h4>
+        <h4 className="text-decoration-underline">Actualizar mis Partidos</h4>
       </div>
       <h5>{selectedTournamentName}</h5>
       {congratulations !== "" ? (
-        <div className="resultsMessageDesign">{congratulations}</div>
+        <div className="messageTournamentDesign">{congratulations}</div>
       ) : (
         <>
           <Table

@@ -82,7 +82,7 @@ export const TennisMatchesToPlay = () => {
   return (
     <div className="pageBaseDesign">
       <div className="titleBaseDesign">
-        <h4>Partidos del Torneo</h4>
+        <h4 className='text-decoration-underline'>Partidos del Torneo</h4>
       </div>
       <div className="titleTournamentBase">
         <h5>{selectedTournamentName}</h5>

@@ -1,12 +1,13 @@
 .boxDesignRegister {
   display: flex;
-  min-width: 60vw;
+  min-width: 40vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 1em;
   padding: 1em;
-  background-color: rgb(243, 243, 87);
+  margin-bottom: 1em;
+  background-color: rgb(245, 245, 35);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 1em;
 }

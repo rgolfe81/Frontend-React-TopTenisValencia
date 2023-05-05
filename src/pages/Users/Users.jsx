@@ -33,7 +33,7 @@ export const Users = () => {
   return (
     <div className="pageBaseDesign">
       <div className="titleBaseDesign">
-        <h4>Usuarios Registrados</h4>
+        <h4 className="text-decoration-underline">Usuarios Registrados</h4>
       </div>
       <Table striped bordered className="bg-white border-3 tableUsers">
         <thead>

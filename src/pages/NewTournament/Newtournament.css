@@ -1,4 +1,4 @@
-  .boxDesignNewTournamentDesign {
+  .boxDesignNewTournament {
     display: flex;
     min-width: 40vw;
     flex-direction: column;
@@ -6,7 +6,7 @@
     align-items: center;
     margin-top: 3em;
     padding: 1em;
-    background-color: rgb(243, 243, 87);
+    background-color:  rgb(245, 245, 35);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 1em;
   }
@@ -16,8 +16,8 @@
   }
 
   @media (max-width: 768px) {
-    .boxDesignLogin {
-      max-width: 90vw;
+    .boxDesignNewTournament {
+      min-width: 90%;
     }
     .longDatePicker{
       width: 10em;

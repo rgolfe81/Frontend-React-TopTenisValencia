@@ -5,7 +5,7 @@ import Pista_tenis from "../../img/pista_tenis.jpg";
 
 export const Home = () => {
   return (
-      <div className="pageBaseDesign">
+      <div className="pageBaseDesign text-dark">
         <Container className="mt-4 mb-3 bg-white border boxContainer">
             <h5 className="text-decoration-underline">Bienvenidos a Top Tenis Valencia</h5>
             <p>

@@ -3,7 +3,6 @@ body {
   margin: 0;
   background-color: rgb(225, 81, 8);
 }
-
 .pageBaseDesign{
   min-height: 70vh;
   max-width: 100vw;
@@ -14,10 +13,28 @@ body {
   color: white;
   overflow-y: auto;
 }
-
 .titleBaseDesign {
   display: flex;
   justify-content: center;
   margin-top: 1em;
   margin-bottom: 1em;
 }
+.messageTournamentDesign{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4em;
+  padding: 2em;
+  background-color: yellow;
+  color: black;
+  font-size: 1.3em;
+  border-radius: 1em;
+  width: 50%;
+  height: 5em;
+}
+@media (max-width: 768px){
+  .messageTournamentDesign{
+    width: 95%;
+    font-size: 1em;
+  }
+}    

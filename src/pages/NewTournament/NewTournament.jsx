@@ -142,12 +142,12 @@ export const NewTournament = () => {
 
   return (
     <div className="pageBaseDesign">
-      <div className="boxDesignNewTournamentDesign">
+      <div className="boxDesignNewTournament">
         <div className="titleBaseDesign">
-          <div className="fs-3">Nuevo Torneo</div>
+          <div className="fs-3 text-decoration-underline text-dark">Nuevo Torneo</div>
         </div>
         {congratulations !== "" ? (
-          <div>{congratulations}</div>
+          <div className="text-black mb-2 mt-2 fs-5">{congratulations}</div>
         ) : (
           <>
             <div>
@@ -166,7 +166,7 @@ export const NewTournament = () => {
                 blurValidateFunction={() => validateName()}
               />
             </div>
-            <div>{newTournamentError.nameError}</div>
+            <div className="text-dark">{newTournamentError.nameError}</div>
             <div>
               <DatePicker
                 className={
@@ -199,7 +199,7 @@ export const NewTournament = () => {
                 dateFormat="dd/MM/yyyy"
               />
             </div>
-            <div>{newTournamentError.intervalDatesError}</div>
+            <div className="text-dark">{newTournamentError.intervalDatesError}</div>
             <div
               className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
               onClick={

@@ -81,13 +81,13 @@ export const SelectedTournament = () => {
   return (
     <div className="pageBaseDesign">
       <div className="titleBaseDesign">
-        <h4>{tournamentById.data.name}</h4>
+        <h4 className="text-decoration-underline">{tournamentById.data.name}</h4>
       </div>
       <h5>
         {new Date(selectedTournamentStartDate).toLocaleDateString("es-ES")} a {new Date(selectedTournamentEndDate).toLocaleDateString("es-ES")}
       </h5>
       {congratulations !== "" ? (
-        <div className="tournamentMessageDesign">{congratulations}</div>
+        <div className="messageTournamentDesign">{congratulations}</div>
       ) : (
         <>
           <Container>

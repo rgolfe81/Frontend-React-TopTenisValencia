@@ -42,7 +42,7 @@ export const PlayersTournament = () => {
   return (
     <div className="pageBaseDesign">
       <div className="titleBaseDesign">
-        <h4>Jugadores Inscritos</h4>
+        <h4 className="text-decoration-underline">Jugadores Inscritos</h4>
       </div>
       <h5>{selectedTournamentName}</h5>
       <Table

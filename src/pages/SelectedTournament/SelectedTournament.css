@@ -1,6 +1,4 @@
-  .tournamentMessageDesign{
-    padding-top: 4em;
-  }
+
 
   .boxImageTournamentDesign{
     height: 20em;
@@ -33,6 +31,7 @@
     justify-content: center;
     align-items: start;
     margin-top: 2em;
+    margin-bottom: 1em;
     gap: 0.5em;
   }
 
