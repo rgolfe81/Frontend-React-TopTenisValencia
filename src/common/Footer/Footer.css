@@ -1,4 +1,32 @@
 .footerDesign{
     background-color: black;
     height: 10vh;
+    color: white;
+  }
+  .boxTriSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70%;
+  }
+  .textGHA{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 30%;
+    color: rgb(225, 81, 8);
+  }
+  .textTTV{
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .iconFooter{
+    font-size: 1.5em;
+  }
+
+  @media (max-width: 768px){
+    .footerDesign{
+        min-height: 10vh;
+        font-size: 8px;
+    }
   }
