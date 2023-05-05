@@ -1,7 +1,7 @@
 .navigatorDesign{
     height: 2em;
     width: 8em;
-    background-color:rgb(192, 97, 47);
+    background-color:rgb(225, 81, 8);
     border-radius: 0.5em;
     border: 0.1em solid white;
     cursor: pointer;
@@ -13,7 +13,7 @@
 }
 
 .navigatorDesign:hover{
-    background-color:rgb(160, 53, 14);
-    color: white;
+    background-color:yellow;
+    color: black;
     transition: 0.3s;
 }

@@ -32,7 +32,7 @@ export const Body = () => {
         <Route path="/clasification" element={<Clasification />} />
         <Route path="/newTournament" element={<NewTournament />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/matchesToPlay" element={<TennisMatchesToPlay />} />
+        <Route path="/matchesToPlay" element={<TennisMatchesToPlay   />} />
         
       </Routes>
     </>
