@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./Tournaments.css";
 import { bringTournaments } from "../../services/apiCalls";
 import { Table } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { idTournament } from "../tournamentSlice";
+import { userData } from "../userSlice";
 
 export const Tournaments = () => {
   const [allTournaments, setAllTournaments] = useState([]);
   const [loading, setLoading] = useState(true); // Agrega un estado para manejar el estado de carga
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const credentialsRdx = useSelector(userData);
+  const { token, fullUser } = credentialsRdx.credentials;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +50,7 @@ export const Tournaments = () => {
             <th>Torneo</th>
             <th>Inicio</th>
             <th>Fin</th>
-            <th>Acción</th>
+            <th className={token ? "text-center" : "btnsHidden"}>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +65,7 @@ export const Tournaments = () => {
                 <td>{tournament.name}</td>
                 <td className="text-center">{new Date(tournament.start_date).toLocaleDateString("es-ES")}</td>
                 <td className="text-center">{new Date(tournament.end_date).toLocaleDateString("es-ES")}</td>
-                <td className="text-center"><button className="goButtonDesign" 
+                <td className={token ? "text-center" : "btnsHidden"}><button className="goButtonDesign" 
                 onClick={() => goToSelectedTournament(tournament)}
                 >Ir</button></td>
               </tr>
@@ -74,7 +77,7 @@ export const Tournaments = () => {
           )}
         </tbody>
       </Table>
-<button className="btnNewTournament" onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
+<button className={token && fullUser.role_id === 2 ? "btnNewTournament" : "btnsHidden"} onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
     </div>
   );
 };

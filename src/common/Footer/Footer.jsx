@@ -13,10 +13,10 @@ export const Footer = () => {
             </div>
             <div>
                 <div>
-                    <BsGithub className='iconFooter'/> <a href="https://github.com/rgolfe81" className='text-white text-decoration-none'> my GitHub</a>
+                    <BsGithub className='iconFooter'/> <a href="https://github.com/rgolfe81" className='text-white text-decoration-none' target="_blank">  GitHub</a>
                 </div>
                 <div>
-                    <BsLinkedin className='iconFooter'/> <a href="https://www.linkedin.com/in/ruben-golfe/" className='text-white text-decoration-none'>my LinkedIn</a>
+                    <BsLinkedin className='iconFooter'/> <a href="https://www.linkedin.com/in/ruben-golfe/" className='text-white text-decoration-none' target="_blank">  LinkedIn</a>
                 </div>
             </div>
         </div>

@@ -23,6 +23,9 @@
 .btnNewTournament:hover{
   border: blue solid 2px;
 }
+.btnsHidden{
+  display: none;
+}
 
 @media (min-width: 768px) {
   .tableTournamentDesign {
