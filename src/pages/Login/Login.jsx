@@ -126,9 +126,9 @@ export const Login = () => {
   };
 
   return (
-    <div className="loginDesign">
+    <div className="pageBaseDesign">
       <div className="boxDesignLogin">
-        <div className="titleLoginDesign">
+        <div className="titleBaseDesign">
           <h4>Iniciar sesión</h4>
         </div>
         {congratulations !== "" ? (

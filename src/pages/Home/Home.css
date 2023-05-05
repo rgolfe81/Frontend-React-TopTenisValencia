@@ -1,11 +1,3 @@
-.homeDesign {
-    min-height: 85vh;
-    max-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-  }
   .imgHome{
     max-width: 100%;
   }
@@ -16,7 +8,7 @@
   }
 
 @media (max-width: 768px){
-  .homeDesign{
+  .pageBaseDesign{
     font-size: 0.8em;
   }
   .boxContainer{

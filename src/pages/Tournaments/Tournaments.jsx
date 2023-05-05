@@ -37,8 +37,8 @@ export const Tournaments = () => {
   }
 
   return (
-    <div className="tournamentsDesign">
-      <div className="titleTournamentsDesign">
+    <div className="pageBaseDesign">
+      <div className="titleBaseDesign">
         <h4>Torneos</h4>
       </div>
       <Table striped bordered className="bg-white border-3 tableTournamentDesign">

@@ -79,8 +79,8 @@ export const SelectedTournament = () => {
   };
 
   return (
-    <div className="tournamentDesign">
-      <div className="titleTournamentDesign">
+    <div className="pageBaseDesign">
+      <div className="titleBaseDesign">
         <h4>{tournamentById.data.name}</h4>
       </div>
       <h5>

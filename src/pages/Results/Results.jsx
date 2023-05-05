@@ -99,8 +99,8 @@ export const Results = () => {
   };
 
   return (
-    <div className="playersTournamentsDesign">
-      <div className="titleResultsDesign">
+    <div className="pageBaseDesign">
+      <div className="titleBaseDesign">
         <h4>Actualizar Ganador</h4>
       </div>
       <h5>{selectedTournamentName}</h5>

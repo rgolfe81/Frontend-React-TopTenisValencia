@@ -40,8 +40,8 @@ export const PlayersTournament = () => {
   }, [token]);
 
   return (
-    <div className="playersTournamentsDesign">
-      <div className="titlePlayersTournamentsDesign">
+    <div className="pageBaseDesign">
+      <div className="titleBaseDesign">
         <h4>Jugadores Inscritos</h4>
       </div>
       <h5>{selectedTournamentName}</h5>

@@ -58,11 +58,11 @@ export const ResultsTennisMatches = () => {
   }, [selectedTournamentId, token]);
 
   return (
-    <div className="resultsTennisMatchesDesign">
-      <h4 className="titleresultsTennisMatches">
+    <div className="pageBaseDesign">
+      <h4 className="titleBaseDesign">
         Resultado Partidos Finalizados
       </h4>
-      <h5 className="titleTournamentResultsTennisMatches">
+      <h5>
         {selectedTournamentName}
       </h5>
       <Table striped bordered className="bg-white border-3 tableTennisMatches">

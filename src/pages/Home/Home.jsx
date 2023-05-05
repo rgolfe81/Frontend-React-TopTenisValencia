@@ -2,13 +2,11 @@ import React from "react";
 import "./Home.css";
 import { Container } from "react-bootstrap";
 import Pista_tenis from "../../img/pista_tenis.jpg";
-import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const navigate = useNavigate();
   return (
-      <div className="homeDesign">
-        <Container className="mt-4  bg-white border boxContainer">
+      <div className="pageBaseDesign">
+        <Container className="mt-4 mb-3 bg-white border boxContainer">
             <h5 className="text-decoration-underline">Bienvenidos a Top Tenis Valencia</h5>
             <p>
                 En Top Tenis Valencia, jugamos al tenis durante todo el año.

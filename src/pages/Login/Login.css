@@ -1,13 +1,4 @@
-.loginDesign {
-    min-height: 85vh;
-    max-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-  }
-  
-  .boxDesignLogin {
+.boxDesignLogin {
     display: flex;
     min-width: 40vw;
     flex-direction: column;
@@ -19,17 +10,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 1em;
   }
-  
-  .titleLoginDesign {
-    border-bottom: 0.15em solid black;
-    width: 100%;
-    height: 2em;
-    margin-bottom: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
   .buttonOff {
     width: 10em;
     height: 2.5em;

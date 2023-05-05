@@ -33,8 +33,8 @@ export const Profile = () => {
     return <div>No se encuentran datos del perfil</div>;
   }
   return (
-    <div className='profileDesign'>
-      <div className="titleProfileDesign">
+    <div className='pageBaseDesign'>
+      <div className="titleBaseDesign">
         <h4>Perfil Usuario</h4>
       </div>
         <Table striped bordered className="bg-white border-3 tableProfileDesign">

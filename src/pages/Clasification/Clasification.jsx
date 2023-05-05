@@ -50,9 +50,9 @@ export const Clasification = () => {
     }, [selectedTournamentId]);
 
   return (
-    <div className='classificationDesign'>
-        <h4 className='titleClassification'>CLASIFICACIÓN</h4>
-        <h5 className='titleTournamentClassification'>
+    <div className='pageBaseDesign'>
+        <h4 className='titleBaseDesign'>CLASIFICACIÓN</h4>
+        <h5>
             <div>{selectedtournamentName}</div>
         </h5>
         <Table striped bordered className='bg-white border-3 tableClassification'>

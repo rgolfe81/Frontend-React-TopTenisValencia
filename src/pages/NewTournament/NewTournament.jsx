@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { checkInputs } from "../../helpers/useful";
 import { addTournament } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router";
 import { InputText } from "../../common/InputText/InputText";
 import dayjs from "dayjs";
-import {
-  BsCalendar2Check,
-  BsCalendar2CheckFill,
-  BsPencilSquare,
-} from "react-icons/bs";
 import "./NewTournament.css";
 
 export const NewTournament = () => {
@@ -147,9 +141,9 @@ export const NewTournament = () => {
   };
 
   return (
-    <div className="newTournamentDesign">
+    <div className="pageBaseDesign">
       <div className="boxDesignNewTournamentDesign">
-        <div className="titleNewTournamentDesign">
+        <div className="titleBaseDesign">
           <div className="fs-3">Nuevo Torneo</div>
         </div>
         {congratulations !== "" ? (

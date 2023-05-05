@@ -103,8 +103,8 @@ export const TennisMatches = () => {
   };
 
   return (
-    <div className="tennisMatchDesign">
-      <div className="titleTennisMatchDesign">
+    <div className="pageBaseDesign">
+      <div className="titleBaseDesign">
         <h4>{selectedtournamentName}</h4>
       </div>
       <h5 className="mb-4">

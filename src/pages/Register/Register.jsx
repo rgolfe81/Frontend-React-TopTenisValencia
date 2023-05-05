@@ -119,9 +119,9 @@ export const Register = () => {
   };
 
   return (
-    <div className="registerDesign">
+    <div className="pageBaseDesign">
       <div className="boxDesignRegister">
-        <div className="titleRegisterDesign">
+        <div className="titleBaseDesign">
           <h4>Registro Usuario</h4>
         </div>
         {congratulations !== "" ? (
