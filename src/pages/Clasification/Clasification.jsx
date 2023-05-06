@@ -5,25 +5,26 @@ import { useSelector } from 'react-redux';
 import { tournamentIdData } from '../tournamentSlice';
 import { bringClassification, bringUsersForClassification } from '../../services/apiCalls';
 import { Table } from 'react-bootstrap';
+import { userData } from '../userSlice';
 
 export const Clasification = () => {
     const navigate = useNavigate();
     const infoTournamentRdx = useSelector(tournamentIdData)
-    const { id, name, start_date, end_date } = infoTournamentRdx.infoTournament;
+    const { id, name } = infoTournamentRdx.infoTournament;
     const selectedTournamentId = id;
     const selectedtournamentName = name;
-    const formatedStartDateTournament = new Date(start_date).toLocaleDateString("es-ES");
-    const formatedEndDateTournament = new Date(end_date).toLocaleDateString("es-ES");
     const [classification, setClassification] = useState([]);
     const [loading, setLoading] = useState(true);
+    const credentialsRdx = useSelector(userData);
+    const { token } = credentialsRdx.credentials;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const usersResponse = await bringUsersForClassification (selectedTournamentId);
+                const usersResponse = await bringUsersForClassification (selectedTournamentId, token);
                 const users = usersResponse.data.data.users;
 
-                const classificationResponse = await bringClassification (selectedTournamentId);
+                const classificationResponse = await bringClassification (selectedTournamentId, token);
                 const clasification = classificationResponse.data.data;
 
                 // Creamos un nuevo array con la información del nombre y apellidos del usuario para mostrar en el renderizado

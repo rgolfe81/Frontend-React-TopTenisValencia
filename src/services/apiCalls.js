@@ -90,12 +90,22 @@ export const bringResults = async (id, token) => {
   return await axios.get(`${root}/results/${id}`, config);
 }
 
-export const bringUsersForClassification = async (id) => {
-  return await axios.get(`${root}/users/tournament/${id}`);
+export const bringClassification = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/classification/${id}`, config);
 }
 
-export const bringClassification = async (id) => {
-  return await axios.get(`${root}/classification/${id}`);
+export const bringUsersForClassification = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.get(`${root}/users/tournament/${id}`, config);
 }
 
 export const addTournament = async (body, token) => {
