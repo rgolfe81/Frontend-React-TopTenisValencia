@@ -60,7 +60,7 @@ export const TennisMatchesToPlay = () => {
       }, [selectedTournamentId, token]);
     
     const deleteThisTennisMatch = async (id) => {
-        const confirm = window.confirm("¿Estás seguro de que quieres eliminar esta partido de tenis?");
+        const confirm = window.confirm("¿Estás seguro de que quieres eliminar este partido de tenis?");
         if (confirm){
             try {
                 await deleteTennisMatch (id, token);
@@ -88,7 +88,7 @@ export const TennisMatchesToPlay = () => {
         <h5>{selectedTournamentName}</h5>
       </div>
       {congratulations != "" ? (
-        <div>{congratulations}</div>
+        <div className='messageTournamentDesign'>{congratulations}</div>
       ) : (
         <>
       <Table striped bordered className="bg-white border-3 tableAllTennisMatches">

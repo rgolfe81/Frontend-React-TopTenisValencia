@@ -111,7 +111,7 @@ export const TennisMatches = () => {
         {formatedStartDateTournament} a {formatedEndDateTournament}
       </h5>
       {congratulations !== "" ? (
-        <div className="tennisMatchMessageDesign">{congratulations}</div>
+        <div className="messageTournamentDesign">{congratulations}</div>
       ) : (
         <>
           <Container className="containerTennisMatches">

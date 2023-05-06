@@ -133,3 +133,12 @@ export const deleteTennisMatch = async (id, token) => {
   };
   return await axios.delete(`${root}/tennisMatches/${id}`, config);
 }
+
+export const deleteTournament = async (id, token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.delete(`${root}/tournament/${id}`, config);
+}
