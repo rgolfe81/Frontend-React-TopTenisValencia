@@ -153,7 +153,7 @@ export const SelectedTournament = () => {
                   </div>
                   <div>
                     <button
-                      className="buttonTournamentDesign"
+                      className={token && fullUser.role_id === 2 ? "buttonTournamentDesign" : "btnsHidden"}
                       onClick={() => navigate("/tennisMatches")}
                     >
                       Crear emparejamientos

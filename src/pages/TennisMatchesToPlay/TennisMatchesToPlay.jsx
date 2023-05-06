@@ -99,7 +99,7 @@ export const TennisMatchesToPlay = () => {
             <th>Jugador 1</th>
             <th>Jugador 2</th>
             <th>Ganador</th>
-            <th>Acción</th>
+            <th className={token && fullUser.role_id === 2 ? "" : "btnsHidden"}>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -115,7 +115,7 @@ export const TennisMatchesToPlay = () => {
                 <td>{`${match.player1_name} ${match.player1_surname}`}</td>
                 <td>{`${match.player2_name} ${match.player2_surname}`}</td>
                 <td>{(match.winner_name && match.winner_surname) ? `${match.winner_name} ${match.winner_surname}` : ""}</td>
-                <td className='text-center'><button className='goButtonDesign goButtonDelete' onClick={() => deleteThisTennisMatch(match.id)}>Eliminar</button></td>
+                <td className={token && fullUser.role_id === 2 ? 'text-center' : 'btnsHidden'}><button className='goButtonDesign goButtonDelete' onClick={() => deleteThisTennisMatch(match.id)}>Eliminar</button></td>
               </tr>
             ))
           ) : (

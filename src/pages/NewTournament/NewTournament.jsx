@@ -147,7 +147,7 @@ export const NewTournament = () => {
           <div className="fs-3 text-decoration-underline text-dark">Nuevo Torneo</div>
         </div>
         {congratulations !== "" ? (
-          <div className="text-black mb-2 mt-2 fs-5">{congratulations}</div>
+          <div className="messageUser">{congratulations}</div>
         ) : (
           <>
             <div>

@@ -132,7 +132,7 @@ export const Login = () => {
           <h4 className="text-dark">Iniciar sesión</h4>
         </div>
         {congratulations !== "" ? (
-          <div className="text-dark mt-3 mb-2 fs-5">{congratulations}</div>
+          <div className="messageUser">{congratulations}</div>
         ) : (
           <>
             <div>

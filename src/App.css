@@ -32,9 +32,22 @@ body {
   width: 50%;
   height: 5em;
 }
+.messageUser{
+  color: black;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-size: 1.5em;
+}
+.btnsHidden{
+  display: none;
+}
+
 @media (max-width: 768px){
   .messageTournamentDesign{
     width: 95%;
+    font-size: 1em;
+  }
+  .messageUser{
     font-size: 1em;
   }
 }    
