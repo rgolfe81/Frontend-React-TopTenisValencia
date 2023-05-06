@@ -50,41 +50,49 @@ export const SelectedTournament = () => {
   };
 
   const addUserToTournament = async () => {
-    try {
-      const response = await addMeToTournament(
-        selectedTournamentID,
-        body,
-        token
-      );
-      let nameUser = fullUser.name;
-      if (nameUser && token && selectedTournamentID) {
-        setCongratulations(
-          `Enhorabuena ${nameUser}, te has inscrito al torneo ${tournamentById.data.name}`
+    const confirm = window.confirm(
+      "¿Estás seguro que quieres inscribirte a este torneo de tenis?"
+    );
+    if (confirm) {
+      try {
+        const response = await addMeToTournament(
+          selectedTournamentID,
+          body,
+          token
         );
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-      } else {
-        setCongratulations(`Error: ${response.data.message}`);
+        let nameUser = fullUser.name;
+        if (nameUser && token && selectedTournamentID) {
+          setCongratulations(
+            `Enhorabuena ${nameUser}, te has inscrito al torneo ${tournamentById.data.name}`
+          );
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        } else {
+          setCongratulations(`Error: ${response.data.message}`);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      } catch (error) {
+        setCongratulations(`Error: ${error.response.data.message}`);
         setTimeout(() => {
           window.location.reload();
         }, 3000);
       }
-    } catch (error) {
-      setCongratulations(`Error: ${error.response.data.message}`);
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
     }
   };
 
   return (
     <div className="pageBaseDesign">
       <div className="titleBaseDesign">
-        <h4 className="text-decoration-underline">{tournamentById.data.name}</h4>
+        <h4 className="text-decoration-underline">
+          {tournamentById.data.name}
+        </h4>
       </div>
       <h5>
-        {new Date(selectedTournamentStartDate).toLocaleDateString("es-ES")} a {new Date(selectedTournamentEndDate).toLocaleDateString("es-ES")}
+        {new Date(selectedTournamentStartDate).toLocaleDateString("es-ES")} a{" "}
+        {new Date(selectedTournamentEndDate).toLocaleDateString("es-ES")}
       </h5>
       {congratulations !== "" ? (
         <div className="messageTournamentDesign">{congratulations}</div>
@@ -126,8 +134,8 @@ export const SelectedTournament = () => {
                     >
                       Partidos
                     </button>
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <button
                       className="buttonTournamentDesign"
                       onClick={() => navigate("/result")}
@@ -153,7 +161,11 @@ export const SelectedTournament = () => {
                   </div>
                   <div>
                     <button
-                      className={token && fullUser.role_id === 2 ? "buttonTournamentDesign" : "btnsHidden"}
+                      className={
+                        token && fullUser.role_id === 2
+                          ? "buttonTournamentDesign"
+                          : "btnsHidden"
+                      }
                       onClick={() => navigate("/tennisMatches")}
                     >
                       Crear emparejamientos
