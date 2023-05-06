@@ -17,6 +17,6 @@
 @media (max-width: 768px){
     .tableAllTennisMatches{
         max-width: 95%;
-        font-size: 7px;
+        font-size: 0.5em;
     }
 }

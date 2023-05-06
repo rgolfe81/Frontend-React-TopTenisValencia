@@ -72,13 +72,14 @@ export const ResultsTennisMatches = () => {
             <th>Lugar</th>
             <th>Jugador 1</th>
             <th>Jugador 2</th>
+            <th>Resultado</th>
             <th>Ganador</th>
           </tr>
         </thead>
         <tbody>
           {loading ? (
             <tr>
-              <td colSpan={5}>Cargando resultados ...</td>
+              <td colSpan={6}>Cargando resultados ...</td>
             </tr>
           ) : tennisResults.length > 0 ? (
             tennisResults.map((result) => (
@@ -87,12 +88,13 @@ export const ResultsTennisMatches = () => {
                 <td>{result.location}</td>
                 <td>{`${result.player1_name} ${result.player1_surname}`}</td>
                 <td>{`${result.player2_name} ${result.player2_surname}`}</td>
+                <td className="text-center">{result.score_result}</td>
                 <td>{`${result.winner_name} ${result.winner_surname}`}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={5}>No se encuentran resultados</td>
+              <td colSpan={6}>No se encuentran resultados</td>
             </tr>
           )}
         </tbody>
