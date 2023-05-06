@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { idTournament } from "../tournamentSlice";
 import { userData } from "../userSlice";
+import { AiFillDelete } from "react-icons/ai";
+import { BsPlayFill } from "react-icons/bs";
 
 export const Tournaments = () => {
   const [allTournaments, setAllTournaments] = useState([]);
@@ -96,11 +98,11 @@ export const Tournaments = () => {
                 <td className={token ? "text-center" : "btnsHidden"}>
                   <button className="goButtonDesign" 
                 onClick={() => goToSelectedTournament(tournament)}
-                >Ir
+                ><BsPlayFill />
                 </button>
                 <button className={fullUser.role_id === 2 ? "goButtonDesign goButtonDelete" : "btnsHidden"} 
                 onClick={() => deleteThisTournament(tournament.id)}
-                >Eliminar
+                ><AiFillDelete />
                 </button>
                 </td>
               </tr>

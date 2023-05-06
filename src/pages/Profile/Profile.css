@@ -2,9 +2,6 @@
     width: 40%;
 }
 
-.titleRowTable{
-  background-color: rgb(171, 171, 171) !important;
-}
 .buttonsAdminProfile{
   display: flex;
   color: white;

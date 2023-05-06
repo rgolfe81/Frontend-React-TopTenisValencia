@@ -118,6 +118,7 @@ export const Results = () => {
                 <th>Partido</th>
                 <th>Jugador 1</th>
                 <th>Jugador 2</th>
+                <th>Resultado</th>
                 <th>Ganador</th>
               </tr>
             </thead>
@@ -125,7 +126,7 @@ export const Results = () => {
               {/* Verifica si los datos han sido cargados */}
               {loading ? (
                 <tr>
-                  <td colSpan={7}>Cargando datos ...</td>
+                  <td colSpan={5}>Cargando datos ...</td>
                 </tr>
               ) : resultWithPlayers.length > 0 ? (
                 resultWithPlayers.map((result) => (
@@ -144,12 +145,27 @@ export const Results = () => {
                     <td>
                       {result.player2_name} {result.player2_surname}
                     </td>
-
-                    <td>
-                      <div className="labelPlayerAlign">
+                    <td className="text-center">
+                      <div>
+                        {selectedCheckboxes[result.tennis_match_id] ? (
+                          <input
+                            className="inputsResultDesign"
+                            name="score_result"
+                            type="text"
+                            placeholder="Ejemplo: 6-4 3-6 7-5"
+                            required
+                            onChange={(e) => inputHandler(e)}
+                          ></input>
+                        ) : (
+                          <div className="text-center">{result.score_result}</div>
+                        )}
+                      </div>
+                    </td>
+                    <td className="text-center">
+                      <div>
                         {selectedCheckboxes[result.tennis_match_id] ? (
                           <select
-                            className="inputsTennisMatchesDesign"
+                            className="inputsResultDesign"
                             name="winner_user_id"
                             onChange={(e) => inputHandler(e)}
                           >
@@ -168,9 +184,10 @@ export const Results = () => {
                             </option>
                           </select>
                         ) : (
-                        <div>
-                          {result.winner_name} {result.winner_surname}
-                        </div>)}
+                          <div>
+                            {result.winner_name} {result.winner_surname}
+                          </div>
+                        )}
                       </div>
                     </td>
                   </tr>

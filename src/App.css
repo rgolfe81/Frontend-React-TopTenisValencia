@@ -41,6 +41,10 @@ body {
 .btnsHidden{
   display: none;
 }
+.titleRowTable{
+  background-color: black;
+  color: white;
+}
 
 @media (max-width: 768px){
   .messageTournamentDesign{

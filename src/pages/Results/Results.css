@@ -1,6 +1,6 @@
   .tableResultsDesign{
     margin-top: 2em;
-    max-width: 70%;
+    max-width: 60%;
   }
 
   .sectionBtnsBottomTable{
@@ -10,12 +10,21 @@
     align-items: end;
   }
 
+  .inputsResultDesign{
+    width: auto;
+    border-radius: 0.3em;
+    border: solid black 2px;
+  }
+
   @media (max-width: 768px) {
     .tableResultsDesign {
-      font-size: 10px;
+      font-size: 0.6em;
       max-width: 95%
     }
     .sectionBtnsBottomTable{
       width: 90%;
+    }
+    .inputsResultDesign{
+      width: 4em;
     }
 }
