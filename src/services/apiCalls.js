@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const root = "http://localhost:8000/api"
 
-const root = "http://backend-laravel-top-tenis-valencia.vercel.app"
+const root = "http://backend-laravel-top-tenis-valencia.vercel.app/api"
 
 export const logMe = async (body) => {
     return await axios.post(`${root}/login`, body);
