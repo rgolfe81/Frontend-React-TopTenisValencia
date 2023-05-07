@@ -15,7 +15,7 @@ export const Home = () => {
             <h5 className="text-decoration-underline">Participantes de los torneos</h5>
             <p>
               Son torneos abiertos, en los que pueden participar tanto jugadores principiantes que se inician, como jugadores que quieren seguir practicando el tenis.
-              Para participar debes <a href="/register"><strong>registrarte</strong></a>, para poder acceder a los torneos disponibles e inscribirte al que quieras jugar.
+              Para participar debes <a href="https://frontend-react-top-tenis-valencia.vercel.app/login"><strong>registrarte</strong></a>, para poder acceder a los torneos disponibles e inscribirte al que quieras jugar.
               Cuando empiece cada torneo, tendrás acceso al calendario de partidos, a la información de tus rivales para poder confirmar el día del partido, a los resultados de los partidos jugados y a la clasificación del torneo.
               Cuando finalices para partido, los participantes son los encargados de actualizar el resultado de cada partido disputado.
               Si no estás registrado, solamente tendrás acceso a listar los torneos de tenis existentes.
