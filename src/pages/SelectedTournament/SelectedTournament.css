@@ -1,5 +1,3 @@
-
-
   .boxImageTournamentDesign{
     height: 20em;
     display: flex;
@@ -14,13 +12,15 @@
 
   .buttonTournamentDesign{
     height: 2.2em;
-    background-color: white;
-    border: white;
+    background-color: rgb(243, 160, 87);
+    border: white solid 2px;
     border-radius: 0.5em;
     width: 20em;
+    font-weight: bold;
 
   }
   .buttonTournamentDesign:hover{
+    font-weight: bold;
     background-color: yellow;
   }
 

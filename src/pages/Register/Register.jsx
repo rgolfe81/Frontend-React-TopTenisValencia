@@ -254,7 +254,7 @@ export const Register = () => {
         />
         </div>
         <div className="text-dark">{credencialesError.phoneError}</div>
-        <div className="text-dark fs-5 mt-2 textRegister">
+        <div className="text-dark mt-2">
           Si ya eres un usuario registrado, sigue este enlace para <a href="/login">iniciar sesión</a>
         </div>
         <div

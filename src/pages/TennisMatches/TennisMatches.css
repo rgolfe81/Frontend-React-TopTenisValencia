@@ -26,21 +26,22 @@
 }
 
 .btnTennisMatches {
-  background-color: rgb(246, 246, 71);
+  background-color: yellow;
   border-radius: 0.5em;
-  border: white solid 2px;
+  border: black solid 2px;
   height: 2.5em;
   margin-bottom: 1em;
 }
 
 .btnTennisMatches:hover {
-  background-color: yellow;
   border: yellow solid 2px;
+  font-weight: bold;
 }
 
 .addMatchBtn {
   background-color: green;
   color: white;
+  margin-bottom: 0;
 }
 .addMatchBtn:hover {
   background-color: green;
@@ -69,10 +70,10 @@
   padding: 1em;
 }
 .dateSelected{
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .textPlayer{
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .react-calendar__month-view__days__day {
   background-color: white;

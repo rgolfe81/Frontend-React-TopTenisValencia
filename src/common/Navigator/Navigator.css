@@ -13,7 +13,8 @@
 }
 
 .navigatorDesign:hover{
-    background-color:yellow;
+    background-color:white;
+    font-weight: bold;
     color: black;
     transition: 0.3s;
 }

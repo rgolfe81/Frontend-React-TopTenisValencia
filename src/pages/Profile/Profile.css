@@ -1,6 +1,10 @@
 .tableProfileDesign{
     width: 40%;
 }
+.titleField{
+  background-color: black !important;
+  color: white !important;
+}
 
 .buttonsAdminProfile{
   display: flex;
@@ -16,6 +20,7 @@
 }
 .btnNavigatorProfile:hover{
   border: blue solid 2px;
+  font-weight: bold;
 }
 
 @media (max-width: 768px){

@@ -163,7 +163,7 @@ export const SelectedTournament = () => {
                     <button
                       className={
                         token && fullUser.role_id === 2
-                          ? "buttonTournamentDesign"
+                          ? "btnAdmin witdtSelectedTournament"
                           : "btnsHidden"
                       }
                       onClick={() => navigate("/tennisMatches")}

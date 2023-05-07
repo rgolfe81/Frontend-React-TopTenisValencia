@@ -10,16 +10,8 @@
 .goButtonDesign:hover{
   border:green solid 2px;
 }
-.btnNewTournament{
-  border-radius: 0.5em;
-  border: solid 2px;
-  background-color: blue;
-  color: white;
-  height: 2.2em;
-  margin-bottom: 1em;
-}
-.btnNewTournament:hover{
-  border: blue solid 2px;
+.witdtSelectedTournament{
+  width: 20em ;
 }
 
 @media (max-width: 768px) {

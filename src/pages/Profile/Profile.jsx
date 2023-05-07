@@ -40,29 +40,29 @@ export const Profile = () => {
       <Table striped bordered className="bg-white border-3 tableProfileDesign">
         <thead>
           <tr>
-            <th className="titleRowTable">Nombre</th>
+            <th className="titleField">Nombre</th>
             <td>{profile.data?.name}</td>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th className="titleRowTable">Apellidos</th>
+            <th className="titleField">Apellidos</th>
             <td>{profile.data?.surname}</td>
           </tr>
           <tr>
-            <th className="titleRowTable">Edad</th>
+            <th className="titleField">Edad</th>
             <td>{profile.data?.age}</td>
           </tr>
           <tr>
-            <th className="titleRowTable">Ciudad</th>
+            <th className="titleField">Ciudad</th>
             <td>{profile.data?.city}</td>
           </tr>
           <tr>
-            <th className="titleRowTable">Email</th>
+            <th className="titleField">Email</th>
             <td>{profile.data?.email}</td>
           </tr>
           <tr>
-            <th className="titleRowTable">Teléfono</th>
+            <th className="titleField">Teléfono</th>
             <td>{profile.data?.phone}</td>
           </tr>
         </tbody>

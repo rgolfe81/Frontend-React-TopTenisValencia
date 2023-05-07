@@ -16,7 +16,7 @@ export const Tournaments = () => {
   const navigate = useNavigate();
   const credentialsRdx = useSelector(userData);
   const { token, fullUser } = credentialsRdx.credentials;
-  const nameUser = fullUser.name;
+  const nameUser = fullUser?.name;
   const [congratulations, setCongratulations] = useState ("");
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export const Tournaments = () => {
             <th>Torneo</th>
             <th>Inicio</th>
             <th>Fin</th>
-            <th className={token ? "text-center" : fullUser.role_id === 2 ? "" : "btnsHidden"}>Acción</th>
+            <th className={token ? "text-center" : fullUser?.role_id === 2 ? "" : "btnsHidden"}>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -100,7 +100,7 @@ export const Tournaments = () => {
                 onClick={() => goToSelectedTournament(tournament)}
                 ><BsPlayFill />
                 </button>
-                <button className={fullUser.role_id === 2 ? "goButtonDesign goButtonDelete" : "btnsHidden"} 
+                <button className={fullUser?.role_id === 2 ? "goButtonDesign goButtonDelete" : "btnsHidden"} 
                 onClick={() => deleteThisTournament(tournament.id)}
                 ><AiFillDelete />
                 </button>
@@ -114,7 +114,7 @@ export const Tournaments = () => {
           )}
         </tbody>
       </Table>
-<button className={token && fullUser.role_id === 2 ? "btnNewTournament" : "btnsHidden"} onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
+<button className={token && fullUser.role_id === 2 ? "btnAdmin" : "btnsHidden"} onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
             </>
       )}
     </div>

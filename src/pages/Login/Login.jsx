@@ -171,7 +171,7 @@ export const Login = () => {
               />
             </div>
             <div className="text-dark">{credencialesError.passwordError}</div>
-            <div className="fs-5 mt-2 text-dark textRegister">Si no estás registrado, sigue este enlace para <a href="/register">registrarte</a>
+            <div className="mt-2 text-dark">Si no estás registrado, sigue este enlace para <a href="/register"><strong>registrarte</strong></a>
             </div>
             <div
               className={activeForm ? "buttonOff buttonOn" : "buttonOff"}
