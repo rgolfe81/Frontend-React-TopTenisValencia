@@ -86,7 +86,7 @@ export const Header = () => {
                 {credentialsRdx.credentials.token ? (
                   <div>
                     <FaUser className="text-white fs-5 textNavigator" />{" "}
-                    {credentialsRdx.credentials.fullUser.name}
+                    {credentialsRdx.credentials.fullUser?.name}
                   </div>
                 ) : null}
               </div>
