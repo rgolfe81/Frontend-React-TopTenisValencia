@@ -53,6 +53,10 @@
     }
     .buttonTournamentDesign{
         width: 13em;
-        height: 1.5em;
+        height: 1.8em;
+    }
+    .witdtSelectedTournament{
+      width: 13em;
+      height: 1.8em;
     }
 }

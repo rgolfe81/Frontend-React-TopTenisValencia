@@ -114,7 +114,7 @@ export const Tournaments = () => {
           )}
         </tbody>
       </Table>
-<button className={token && fullUser.role_id === 2 ? "btnAdmin" : "btnsHidden"} onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
+<button className={token && fullUser?.role_id === 2 ? "btnAdmin" : "btnsHidden"} onClick={() => {navigate("/newTournament")}}>Nuevo Torneo</button>
             </>
       )}
     </div>
