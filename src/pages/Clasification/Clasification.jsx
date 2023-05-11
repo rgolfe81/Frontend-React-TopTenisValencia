@@ -49,7 +49,7 @@ export const Clasification = () => {
         }
         fetchData()
     }, [selectedTournamentId]);
-
+    
   return (
     <div className='pageBaseDesign'>
         <h4 className='titleBaseDesign text-decoration-underline'>CLASIFICACIÓN</h4>

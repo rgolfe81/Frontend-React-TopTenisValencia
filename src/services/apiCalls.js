@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// git a
-const root = "https://backend-laravel-top-tenis-valencia.vercel.app/api"
+const root = "http://localhost:8000/api"
 
 // const root = "https://backend-laravel-top-tenis-valencia.vercel.app/api"
 

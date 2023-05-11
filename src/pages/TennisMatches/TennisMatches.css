@@ -41,10 +41,8 @@
 .addMatchBtn {
   background-color: green;
   color: white;
-  margin-bottom: 0;
 }
 .addMatchBtn:hover {
-  background-color: green;
   border: green solid 2px;
 }
 

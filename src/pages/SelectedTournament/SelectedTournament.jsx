@@ -38,7 +38,7 @@ export const SelectedTournament = () => {
 
   if (!tournamentById) {
     return (
-      <div className="tournamentDesign tournamentMessageDesign">
+      <div className="pageBaseDesign p-5">
         Cargando datos ...
       </div>
     );

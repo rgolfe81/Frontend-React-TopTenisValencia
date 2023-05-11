@@ -14,7 +14,6 @@
     <li><a href="#contribuciones">Contribuciones</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#webgrafia">Webgrafia</a></li>
-    <li><a href="#errores">Errores conocidos</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ol>
@@ -130,10 +129,6 @@ Este proyecto se encuentra bajo licencia MIT
 ## Webgrafia:
 Para conseguir mi objetivo he recopilado información de:
 - documentación interna de la formación en GeeksHubs Academy 
-
-## Errores conocidos:
-- La puntuación de la clasificación, no aumenta correctamente los puntos cuando el ganador es el jugador1
-- La puntuación de la clasificación, se descuadra al modificar un resultado de un partido ya guardado anteriormente 
   
 ## Agradecimientos:
 

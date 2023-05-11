@@ -21,6 +21,7 @@ export const Results = () => {
   const [loading, setLoading] = useState(true);
   const [winnerToResult, setWinnerToResult] = useState({
     winner_user_id: "",
+    score_result: ""
   });
   const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
   const [selectedMatchId, setSelectedMatchId] = useState(null);
@@ -51,8 +52,8 @@ export const Results = () => {
           selectedTournamentId,
           token
         );
-        console.log(response.data.data);
         resultPlayers = response.data.data;
+
         setResultWithPlayers(resultPlayers);
         setLoading(false); // Actualiza el estado de carga a false cuando los datos se cargan
       } catch (error) {
@@ -74,8 +75,12 @@ export const Results = () => {
   }, [selectedCheckboxes]);
 
   const sendUpdateWinnerToResult = () => {
+    // console.log("ganador dentro de objeto ... ",winnerToResult)
+    // console.log("ganador fuera de objeto ... ",winnerToResult.winner_user_id)
+    winnerToResult.winner_user_id = parseInt(winnerToResult.winner_user_id)
     updateWinnerToResult(selectedMatchId, winnerToResult, token)
-      .then((response) => {
+      .then((response) => {   
+        // console.log("respuesta ......  ",response)   
         if (fullUser.name) {
           setCongratulations(
             `Enhorabuena ${fullUser.name}, has actualizado el resultado del partido correctamente`
@@ -95,7 +100,10 @@ export const Results = () => {
         setTimeout(() => {
           window.location.reload();
         }, 3000);
+      console.log(error)
       });
+      // console.log("ganador .......  ",winnerToResult.winner_user_id);
+      // console.log("partido .......  ",selectedMatchId);
   };
 
   return (
@@ -133,7 +141,9 @@ export const Results = () => {
                   <tr key={result.id}>
                     <td className="text-center">
                       <input
+                        className={!result.winner_name ? "" : "btnsHidden"}
                         type="checkbox"
+                        value=""
                         id={result.tennis_match_id}
                         checked={selectedCheckboxes[result.tennis_match_id]}
                         onChange={(e) => handleCheckboxChange(e)}
@@ -153,7 +163,6 @@ export const Results = () => {
                             name="score_result"
                             type="text"
                             placeholder="Ejemplo: 6-4 3-6 7-5"
-                            required
                             onChange={(e) => inputHandler(e)}
                           ></input>
                         ) : (
@@ -169,7 +178,7 @@ export const Results = () => {
                             name="winner_user_id"
                             onChange={(e) => inputHandler(e)}
                           >
-                            <option value="">Seleccione ganador</option>
+                            <option value={null}>Seleccione ganador</option>
                             <option
                               key={result.player1_user_id}
                               value={result.player1_user_id}
