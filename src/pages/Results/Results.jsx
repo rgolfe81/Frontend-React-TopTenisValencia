@@ -23,7 +23,10 @@ export const Results = () => {
     winner_user_id: "",
     score_result: ""
   });
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState({
+    idResult: null,
+    isChecked: false
+  });
   const [selectedMatchId, setSelectedMatchId] = useState(null);
   const [congratulations, setCongratulations] = useState("");
   const navigate = useNavigate();
@@ -40,7 +43,8 @@ export const Results = () => {
   const handleCheckboxChange = (e) => {
     setSelectedCheckboxes((prevState) => ({
       ...prevState,
-      [e.target.id]: e.target.checked,
+      idResult: e.target.id,
+      isChecked: e.target.checked,
     }));
   };
 
@@ -68,19 +72,17 @@ export const Results = () => {
 
   // Actualizamos el valor del id del partido seleccionado en el checkbox, para enviarlo por parametros a la función updateWinnerToResult()
   useEffect(() => {
-    const matchId = Object.keys(selectedCheckboxes).find(
-      (id) => selectedCheckboxes[id] === true
-    );
-    setSelectedMatchId(matchId);
-  }, [selectedCheckboxes]);
+    let matchId = null;
+    if (selectedCheckboxes.isChecked === true) {
+      matchId = selectedCheckboxes.idResult;
+      setSelectedMatchId(matchId);
+    }
+  }, [selectedCheckboxes, selectedMatchId]);
 
   const sendUpdateWinnerToResult = () => {
-    // console.log("ganador dentro de objeto ... ",winnerToResult)
-    // console.log("ganador fuera de objeto ... ",winnerToResult.winner_user_id)
     winnerToResult.winner_user_id = parseInt(winnerToResult.winner_user_id)
     updateWinnerToResult(selectedMatchId, winnerToResult, token)
       .then((response) => {   
-        // console.log("respuesta ......  ",response)   
         if (fullUser.name) {
           setCongratulations(
             `Enhorabuena ${fullUser.name}, has actualizado el resultado del partido correctamente`
@@ -102,8 +104,6 @@ export const Results = () => {
         }, 3000);
       console.log(error)
       });
-      // console.log("ganador .......  ",winnerToResult.winner_user_id);
-      // console.log("partido .......  ",selectedMatchId);
   };
 
   return (
@@ -143,7 +143,6 @@ export const Results = () => {
                       <input
                         className={!result.winner_name ? "" : "btnsHidden"}
                         type="checkbox"
-                        value=""
                         id={result.tennis_match_id}
                         checked={selectedCheckboxes[result.tennis_match_id]}
                         onChange={(e) => handleCheckboxChange(e)}
@@ -157,7 +156,7 @@ export const Results = () => {
                     </td>
                     <td className="text-center">
                       <div>
-                        {selectedCheckboxes[result.tennis_match_id] ? (
+                        {!result.winner_name && selectedCheckboxes.isChecked ? (
                           <input
                             className="inputsResultDesign"
                             name="score_result"
@@ -172,7 +171,7 @@ export const Results = () => {
                     </td>
                     <td className="text-center">
                       <div>
-                        {selectedCheckboxes[result.tennis_match_id] ? (
+                        { !result.winner_name && selectedCheckboxes.isChecked ? (
                           <select
                             className="inputsResultDesign"
                             name="winner_user_id"
