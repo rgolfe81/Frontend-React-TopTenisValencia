@@ -21,7 +21,7 @@ export const TennisMatchesToPlay = () => {
     const [allTennisMatches, setAllTennisMatches] = useState([]);
     const [congratulations, setCongratulations] = useState("")
 
-    useEffect(() => {
+
         const fetchData = async () => {
           try {
             const matchesResponse = await bringTennisMatches(
@@ -56,7 +56,7 @@ export const TennisMatchesToPlay = () => {
         if (token) {
           fetchData();
         }
-      }, [selectedTournamentId, token, allTennisMatches]);
+
   
     const deleteThisTennisMatch = async (id) => {
         const confirm = window.confirm("¿Estás seguro de que quieres eliminar este partido de tenis?");
@@ -67,7 +67,7 @@ export const TennisMatchesToPlay = () => {
                 setAllTennisMatches(updateAllTennisMatches);
                 setCongratulations(`Enhorabuena ${nameUser}, has eliminado el partido de tenis correctamente`);
                 // setTimeout(async () => {
-                fetchData();
+                () => fetchData();
               // }, 3000);
             } catch (error) {
                 setCongratulations(`Error: ${error.response.data.message}`);
