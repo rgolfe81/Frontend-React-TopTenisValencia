@@ -68,7 +68,7 @@ export const TennisMatchesToPlay = () => {
                 setAllTennisMatches(updateAllTennisMatches);
                 setCongratulations(`Enhorabuena ${nameUser}, has eliminado el partido de tenis correctamente`);
                 setTimeout(() => {
-                  navigate("/matchesToPlay");
+                  fetchData();
                 }, 3000);
             } catch (error) {
                 setCongratulations(`Error: ${error.response.data.message}`);
