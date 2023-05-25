@@ -21,6 +21,7 @@ export const TennisMatchesToPlay = () => {
     const [allTennisMatches, setAllTennisMatches] = useState([]);
     const [congratulations, setCongratulations] = useState("")
 
+    useEffect(() => {
         const fetchData = async () => {
           try {
             const matchesResponse = await bringTennisMatches(
@@ -52,6 +53,10 @@ export const TennisMatchesToPlay = () => {
             setLoading(false);
           }
         };
+        if (token) {
+          fetchData();
+        }
+      }, [selectedTournamentId, token, allTennisMatches]);
   
     const deleteThisTennisMatch = async (id) => {
         const confirm = window.confirm("¿Estás seguro de que quieres eliminar este partido de tenis?");
@@ -61,9 +66,9 @@ export const TennisMatchesToPlay = () => {
                 const updateAllTennisMatches = allTennisMatches.filter((match) => match.id !== id);
                 setAllTennisMatches(updateAllTennisMatches);
                 setCongratulations(`Enhorabuena ${nameUser}, has eliminado el partido de tenis correctamente`);
-                setTimeout(async () => {
-                  await fetchData();
-              }, 3000);
+                // setTimeout(async () => {
+                fetchData();
+              // }, 3000);
             } catch (error) {
                 setCongratulations(`Error: ${error.response.data.message}`);
                 setTimeout(() => {
@@ -72,11 +77,9 @@ export const TennisMatchesToPlay = () => {
             }
         }
     }
-  useEffect(() => {
-      if (token) {
-        fetchData();
-      }
-  }, [selectedTournamentId, token, allTennisMatches]);
+
+
+
 
   return (
     <div className="pageBaseDesign">
