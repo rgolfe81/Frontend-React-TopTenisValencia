@@ -61,9 +61,9 @@ export const TennisMatchesToPlay = () => {
                 const updateAllTennisMatches = allTennisMatches.filter((match) => match.id !== id);
                 setAllTennisMatches(updateAllTennisMatches);
                 setCongratulations(`Enhorabuena ${nameUser}, has eliminado el partido de tenis correctamente`);
-                setTimeout(() => {
-                  fetchData();
-                }, 3000);
+                setTimeout(async () => {
+                  await fetchData();
+              }, 3000);
             } catch (error) {
                 setCongratulations(`Error: ${error.response.data.message}`);
                 setTimeout(() => {
