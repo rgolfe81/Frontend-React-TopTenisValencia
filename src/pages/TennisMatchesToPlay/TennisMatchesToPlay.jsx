@@ -76,7 +76,7 @@ export const TennisMatchesToPlay = () => {
       if (token) {
         fetchData();
       }
-  }, [selectedTournamentId, token]);
+  }, [selectedTournamentId, token, allTennisMatches]);
 
   return (
     <div className="pageBaseDesign">
